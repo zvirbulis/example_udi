@@ -1,0 +1,13 @@
+queryParameters:
+  offset:
+    description: Начальное смещение элементов в коллекции
+    type: number
+    minimum: 0
+    default: 0
+    required: false
+  limit:
+    description: Ограничение по к-ву возвращаемых элементов
+    type: number
+    minimum: 1
+    default: 15
+    required: false

@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/attributes/Readonly.json",
+  "type": "boolean",
+  "title": "Readonly",
+  "description": "Атрибут, що сигналізує про те, що властивість доступна тільки для читання",
+  "default": true
+}

@@ -1,0 +1,130 @@
+{
+  "code": "BreakActivities",
+  "access": ["manager"],
+  "list": {
+    "metadata": {
+      "title": "Активність на перерві",
+      "class_name": "subjects-list"
+    },
+    "sort": {
+      "field": "BreakActivity.id",
+      "order": "desc"
+    },
+    "pagination": {
+      "per_page": 20
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "BreakActivity.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Назва",
+        "code": "BreakActivity.name",
+        "sortable": true
+      },
+      {
+        "name": "Посилання",
+        "code": "BreakActivity.url",
+        "sortable": false
+      },
+      {
+        "name": "Позиція в розкладі",
+        "code": "BreakActivity.ScheduleSlot.name",
+        "sortable": false
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування активності"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "BreakActivity.id",
+          "BreakActivity.name",
+          "BreakActivity.url",
+          "BreakActivity.schedule_slot_id"
+        ],
+        "groups": [],
+        "fields": {
+          "BreakActivity.id": {
+            "name": "Ід",
+            "primary_key": true,
+            "code": "BreakActivity.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "BreakActivity.name": {
+            "name": "Назва",
+            "code": "BreakActivity.name",
+            "type_element": "input",
+            "type_data": "text",
+            "required": true,
+            "validation": {
+              "rules": "required|max:64",
+              "messages": {
+                "required": "Назва активності не повинна бути порожньою",
+                "max": "Назва активності не повинна перевищувати :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "BreakActivity.url": {
+            "name": "Посилання",
+            "code": "BreakActivity.url",
+            "type_element": "textarea",
+            "validation": {
+              "rules": "max:2048",
+              "messages": {
+                "max": "Посилання не повинне перевищувати :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "BreakActivity.schedule_slot_id": {
+            "name": "Позиція в розкладі",
+            "description": "Позиція в розкладі після якої відбувається активність",
+            "code": "BreakActivity.schedule_slot_id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "ScheduleSlot.id",
+              "label": "ScheduleSlot.name",
+              "sort": "ScheduleSlot.id:asc"
+            },
+            "select_values": [],
+            "validation": {
+              "rules": "required",
+              "messages": {
+                "required": "Поле з позицією у розкладі має бути заповнене",
+                "unique": "На перерві для цієї позиції може існувати лише одна активність"
+              }
+            },
+            "value": ""
+          }
+        }
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "_link": ""
+}

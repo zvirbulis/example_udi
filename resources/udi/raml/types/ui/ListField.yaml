@@ -1,0 +1,8 @@
+type: UI.Field
+displayName: UI.ListField
+properties:
+  sortable:
+    type: boolean
+    description: специальные флаг, определяющий можно ли сортировать список по этому полю
+    default: false
+

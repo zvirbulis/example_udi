@@ -1,0 +1,144 @@
+{
+  "code": "LessonActivities",
+  "access": ["head_teacher", "manager"],
+  "list": {
+    "metadata": {
+      "title": "Додаткові активності на уроці",
+      "class_name": "subjects-list"
+    },
+    "sort": {
+      "field": "LessonActivity.id",
+      "order": "desc"
+    },
+    "pagination": {
+      "per_page": 20
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "LessonActivity.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Назва",
+        "code": "LessonActivity.name",
+        "sortable": true
+      },
+      {
+        "name": "Опис",
+        "code": "LessonActivity.description",
+        "sortable": true
+      },
+      {
+        "name": "Посилання",
+        "code": "LessonActivity.url",
+        "sortable": false
+      },
+      {
+        "name": "Колір",
+        "code": "LessonActivity.color",
+        "sortable": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування додаткових активностей"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "LessonActivity.id",
+          "LessonActivity.name",
+          "LessonActivity.description",
+          "LessonActivity.url",
+          "LessonActivity.color"
+        ],
+        "groups": [],
+        "fields": {
+          "LessonActivity.id": {
+            "name": "Ід",
+            "primary_key": true,
+            "code": "LessonActivity.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "LessonActivity.name": {
+            "name": "Назва",
+            "code": "LessonActivity.name",
+            "type_element": "input",
+            "type_data": "text",
+            "required": true,
+            "validation": {
+              "rules": "required|max:64",
+              "messages": {
+                "required": "Назва активності не повинна бути порожньою",
+                "max": "Назва активності не повинна перевищувати :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "LessonActivity.description": {
+            "name": "Опис",
+            "code": "LessonActivity.description",
+            "description": "",
+            "type_element": "textarea",
+            "type_data": "text",
+            "errors": [],
+            "value": ""
+          },
+          "LessonActivity.url": {
+            "name": "Посилання",
+            "code": "LessonActivity.url",
+            "type_element": "textarea",
+            "validation": {
+              "rules": "max:2048",
+              "messages": {
+                "max": "Посилання не повинне перевищувати :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "LessonActivity.color": {
+            "name": "Колір",
+            "code": "LessonActivity.color",
+            "type_element": "select_color",
+            "required": false,
+            "validation": {
+              "rules": "max:7",
+              "messages": {
+                "max": "Код кольору не повинен перевищувати :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          }
+        }
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "exceptions": {
+    "delete-foreign-keys": [
+      "<br> - картки уроків"
+    ]
+  },
+  "_link": ""
+}

@@ -1,0 +1,6 @@
+get:
+  description: Возвращает схему данных для рабочей области управления Аудиториями
+  is: [
+    response_ok: {responseData: Workspaces.ClassRooms, responseDataExample: !include /examples/types/workspaces/ClassRooms.json},
+    response_unauthorized, response_forbidden
+  ]

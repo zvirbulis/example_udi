@@ -1,0 +1,193 @@
+{
+  "code": "Streams",
+  "access": ["head_teacher", "manager"],
+  "list": {
+    "metadata": {
+      "title": "Потоки",
+      "description": "Список потоків школи",
+      "class_name": "Streams-list"
+    },
+    "categories": {
+      "levels": [
+        "Year.name"
+      ],
+      "items": []
+    },
+    "sort": {
+      "field": "Stream.sort",
+      "order": "desc"
+    },
+    "pagination": {
+      "per_page": 20
+    },
+    "filter":{
+      "order": [
+        "Stream.year_id",
+        "Stream.StreamStudentClass.student_class_id"
+      ],
+      "fields":{
+        "Stream.year_id": {
+          "one_row": false,
+          "class_name": ""
+        },
+        "Stream.StreamStudentClass.student_class_id": {
+          "description": "",
+          "multiple": false
+        }
+      }
+    },
+
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "Stream.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Назва",
+        "code": "Stream.name",
+        "sortable": true
+      },
+      {
+        "name": "Рік",
+        "code": "Stream.Year.name",
+        "sortable" : true,
+        "sort": {
+          "field": "Stream.Year.sort",
+          "order": "asc"
+        }
+      },
+      {
+        "name": "Сортування",
+        "code": "Stream.sort",
+        "sortable": true
+      },
+      {
+        "name": "Класи",
+        "code": "Stream.StreamStudentClass.StudentClass.name"
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування потоку"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend",
+            "unique_fields": ["Stream.name"]
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "Stream.id",
+          "Stream.name",
+          "Stream.sort",
+          "Stream.year_id",
+          "Stream.StreamStudentClass.student_class_id"
+        ],
+        "groups": [],
+        "fields": {
+          "Stream.id": {
+            "name": "Ід",
+            "primary_key": true,
+            "code": "Stream.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "Stream.name": {
+            "name": "Назва",
+            "code": "Stream.name",
+            "type_element": "input",
+            "type_data": "text",
+            "required": true,
+            "validation": {
+              "rules": "required|max:128",
+              "messages": {
+                "required": "Поле з назваю потоку має бути заповнене",
+                "max": "Назва потоку не повинна перевищувати :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "Stream.year_id": {
+            "name": "Навчальний рік",
+            "code": "Stream.year_id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "Year.id",
+              "label": "Year.name",
+              "autoload": ""
+            },
+            "select_values": [
+            ],
+            "required": true,
+            "validation": {
+              "rules": "required",
+              "messages": {
+                "required": "Навчальний рік повинен бути заповненим"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "Stream.StreamStudentClass.student_class_id": {
+            "name": "Класи",
+            "description": "Показ та вибір класів класів можливий тільки після збереження потоку із встановленним роком",
+            "code": "Stream.StreamStudentClass.student_class_id",
+            "primary_key": true,
+            "type_element": "select",
+            "multiple": true,
+            "select_settings": {
+              "id": "StudentClass.id",
+              "label": "StudentClass.name",
+              "sort": "StudentClass.name:asc",
+              "filter": "StudentClass.year_id::$self[Stream.year_id]"
+            },
+            "value": ""
+          },
+          "Stream.sort": {
+            "name": "Сортування",
+            "code": "Stream.sort",
+            "type_element": "input",
+            "type_data": "integer",
+            "validation": {
+              "rules": "integer",
+              "messages": {
+                "integer": " Значення поля має бути числом"
+              }
+            },
+            "value": "10",
+            "errors": []
+          }
+        },
+        "relations": [
+          {
+            "code": "LessonCards",
+            "name": "Карточки уроків",
+            "_link": ""
+          }
+        ]
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "exceptions": {
+    "delete-foreign-keys": [
+      "<br> - картки уроків"
+    ]
+  },
+  "_link": ""
+}

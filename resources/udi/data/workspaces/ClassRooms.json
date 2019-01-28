@@ -1,0 +1,272 @@
+{
+  "code": "ClassRooms",
+  "access": ["manager"],
+  "list": {
+    "metadata": {
+      "title": "Список аудиторій",
+      "class_name": "class-rooms-list"
+    },
+    "sort": {
+      "field": "ClassRoom.sort",
+      "order": "asc"
+    },
+    "pagination": {
+      "page": 1,
+      "per_page": 10,
+      "total_pages": null,
+      "total_items": null
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "ClassRoom.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Активність",
+        "code": "ClassRoom.active",
+        "sortable": true
+      },
+      {
+        "name": "Назва",
+        "code": "ClassRoom.name",
+        "sortable": true
+      },
+      {
+        "name": "Скорочена назва",
+        "code": "ClassRoom.short_name",
+        "sortable": true
+      },
+      {
+        "name": "Опис",
+        "code": "ClassRoom.description"
+      },
+      {
+        "name": "Місткість",
+        "code": "ClassRoom.capacity",
+        "sortable": true
+      },
+      {
+        "name": "Чатаються предмети",
+        "code": "ClassRoom.ClassRoomSubject.Subject.name"
+      },
+      {
+        "name": "Клас",
+        "code": "ClassRoom.StudentClass.name"
+      },
+      {
+        "name": "Сортування",
+        "code": "ClassRoom.sort",
+        "sortable": true
+      },
+      {
+        "name": "Створено",
+        "code": "ClassRoom.created_at",
+        "sortable": true
+      },
+      {
+        "name": "Оновлено",
+        "code": "ClassRoom.updated_at",
+        "sortable": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування аудиторії",
+        "class_name": "class-rooms-edit-form"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "ClassRoom.id",
+          "ClassRoom.active",
+          "ClassRoom.name",
+          "ClassRoom.short_name",
+          "ClassRoom.capacity",
+          "ClassRoom.description",
+          "ClassRoom.ClassRoomSubject.subject_id",
+          "ClassRoom.student_class_id",
+          "ClassRoom.sort",
+          "ClassRoom.created_at",
+          "ClassRoom.updated_at"
+        ],
+        "groups": [],
+        "fields": {
+          "ClassRoom.id": {
+            "name": "Ід",
+            "primary_key": true,
+            "code": "ClassRoom.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "ClassRoom.active": {
+            "name": "Активність",
+            "code": "ClassRoom.active",
+            "type_element": "checkbox",
+            "value": ""
+          },
+          "ClassRoom.name": {
+            "name": "Назва",
+            "code": "ClassRoom.name",
+            "description": "Описание поля***.",
+            "class_name": "class-room-name",
+            "type_element": "input",
+            "type_data": "text",
+            "required": true,
+            "validation": {
+              "rules": "required|max:64|unique",
+              "messages": {
+                "required": "Назва повинна бути заповненою",
+                "max": "Назва не повинна перевишувать :max символів",
+                "unique": "Аудиторія з такою назвою вже присутня в системі"
+              }
+            },
+            "required_message": "Вкажіть назву",
+            "validation_error": true,
+            "validation_message": "Помилка валідації! Error-beep-beep!",
+            "value": "",
+            "errors": []
+          },
+          "ClassRoom.short_name": {
+            "name": "Скорочена назва",
+            "code": "ClassRoom.short_name",
+            "description": "Скорочена назва аудиторії",
+            "class_name": "class-room-name",
+            "type_element": "input",
+            "type_data": "text",
+            "required": true,
+            "validation": {
+              "rules": "required|max:10|unique",
+              "messages": {
+                "required": "Скорочена назва повинна бути заповненою",
+                "max": "Скорочена назва не повинна перевищувать :max символів",
+                "unique": "Аудиторія з такою скороченою назвою вже присутня в системі"
+              }
+            },
+            "required_message": "Вкажіть назву",
+            "validation_error": true,
+            "validation_message": "Помилка валідації! Error-beep-beep!",
+            "value": "",
+            "errors": []
+          },
+          "ClassRoom.capacity": {
+            "name": "Місткість",
+            "code": "ClassRoom.capacity",
+            "type_element": "input",
+            "required": true,
+            "validation": {
+              "rules": "required|integer",
+              "messages": {
+                "required": "Місткість аудиторії обов'язкова до заповнення",
+                "integer": "Значення має бути цілим числом"
+              }
+            },
+            "value": ""
+          },
+          "ClassRoom.description": {
+            "name": "Опис",
+            "code": "ClassRoom.description",
+            "description": "Опис аудиторії",
+            "class_name": "class-room-description",
+            "type_element": "textarea",
+            "type_data": "text",
+            "rows": 2,
+            "max_length": 255,
+            "validation": {
+              "rules": "max:255",
+              "messages": {
+                "max": "Опис не повинен первищувать :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "ClassRoom.ClassRoomSubject.subject_id": {
+            "name": "Читаються предмети",
+            "code": "ClassRoom.ClassRoomSubject.subject_id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "Subject.id",
+              "label": "Subject.name"
+            },
+            "select_values": [
+              {"id": "0", "label": "Загальний фонд"}
+            ],
+            "multiple": true,
+            "value": ["0"]
+          },
+          "ClassRoom.student_class_id": {
+            "name": "Закріпити за класом",
+            "code": "ClassRoom.student_class_id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "StudentClass.id",
+              "label": "StudentClass.name",
+              "sort": "StudentClass.sort:desc"
+            },
+            "select_values": [],
+            "value": ""
+          },
+          "ClassRoom.sort": {
+            "name": "Сортувальне число",
+            "code": "ClassRoom.sort",
+            "type_element": "input",
+            "validation": {
+              "rules": "required|integer",
+              "messages": {
+                "required": "Поле сортування має бути заповнене",
+                "integer": "Сортувальне число повинне бути цілим числом"
+              }
+            },
+            "value": "10"
+          },
+          "ClassRoom.created_at": {
+            "name": "Створено",
+            "code": "ClassRoom.created_at",
+            "type_element": "hidden",
+            "errors": []
+          },
+          "ClassRoom.updated_at": {
+            "name": "Оновлено",
+            "code": "ClassRoom.updated_at",
+            "type_element": "hidden",
+            "value": "",
+            "errors": []
+          }
+        },
+        "relations": [
+          {
+            "code": "ClassRoomSubjects",
+            "name": "Читаються предмети",
+            "_link": ""
+          }
+        ]
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "exceptions": {
+    "delete-foreign-keys": [
+      "<br> - список дисциплін для аудиторії",
+      "<br> - карточки уроків",
+      "<br> - заміни"
+    ]
+  },
+  "_link": ""
+}

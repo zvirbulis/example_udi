@@ -1,0 +1,6 @@
+responses:
+  <<responseCode>>:
+    description: <<responseDescription>>
+    body:
+      application/json:
+        example: !include /examples/response.json

@@ -1,0 +1,115 @@
+{
+  "code": "SKDHardware",
+  "access": ["manager"],
+  "list": {
+    "metadata": {
+      "title": "SKD Потстрої",
+      "class_name": "skd-hardware-list"
+    },
+    "sort": {
+      "field": "SKDHardware.id",
+      "order": "desc"
+    },
+    "pagination": {
+      "per_page": 10
+    },
+    "filter": {
+      "order": [
+        "SKDHardware.hardware_id",
+        "SKDHardware.title",
+        "SKDHardware.type"
+      ],
+      "fields": {
+        "SKDHardware.type": {
+          "type_filter": "select"
+        },
+        "SKDHardware.hardware_id": {
+          "type_filter": "substring"
+        },
+        "SKDHardware.title": {
+          "type_filter": "substring"
+        }
+      }
+    },
+    "fields": [
+      {
+        "name": "ІД",
+        "code": "SKDHardware.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "ІД пристрою",
+        "code": "SKDHardware.hardware_id",
+        "sortable": true
+      },
+      {
+        "name": "Назва пристрою",
+        "code": "SKDHardware.title",
+        "sortable": true
+      },
+      {
+        "name": "Тип пристрою",
+        "code": "SKDHardware.type",
+        "sortable": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування пристрою"
+      },
+      "grid": {
+        "order": [
+          "SKDHardware.id",
+          "SKDHardware.hardware_id",
+          "SKDHardware.title",
+          "SKDHardware.type"
+        ],
+        "groups": [],
+        "fields": {
+          "SKDHardware.id": {
+            "name": "Ід",
+            "primary_key": true,
+            "code": "SKDHardware.id",
+            "type_element": "hidden",
+            "value": "",
+            "required": true
+          },
+          "SKDHardware.hardware_id": {
+            "name": "ІД пристрою",
+            "code": "SKDHardware.hardware_id",
+            "type_element": "input",
+            "required": true
+          },
+          "SKDHardware.title": {
+            "name": "Назва пристрою",
+            "code": "SKDHardware.title",
+            "type_element": "input"
+          },
+          "SKDHardware.type": {
+            "name": "Тип пристрою",
+            "code": "SKDHardware.type",
+            "type_element": "select",
+            "select_values": [
+              {
+                "id": "enter",
+                "label": "Вхід"
+              },
+              {
+                "id": "exit",
+                "label": "Вихід"
+              }
+            ],
+            "required": true
+          }
+        }
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "_link": ""
+}

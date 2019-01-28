@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/FieldsErrors.json",
+  "type": "object",
+  "title": "Помилки полів",
+  "description": "",
+  "properties": {
+    "fieldsErrors": {
+      "type": "object",
+      "title": "Помилки полів",
+      "description": "Об'єкт, який містить помилки полів форми або властивостей об'єків з прив'язкою до даних полів/властивостей",
+      "name": "fieldsErrors",
+      "patternProperties": {
+        "^[a-zA-Z_\\-]+$": {
+          "type": "array",
+          "title": "Масив помилок",
+          "description": "Масив помилок, які прив'язані до поля/властивості propertyName. Де propertyName - назва поля/властивості",
+          "items":{
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer",
+                "title": "Код помилки",
+                "example": 101
+              },
+              "message": {
+                "type": "string",
+                "title": "Повідомлення помилки",
+                "example": "Поле E-mail не має бути порожнім"
+              },
+              "position": {
+                "type": "integer",
+                "title": "Позиція в формі, якщо властивість множинна",
+                "minimum": 1,
+                "example": 2
+              }
+            }
+          },
+          "additionalItems": false
+        }
+      }
+    }
+  }
+}
+        

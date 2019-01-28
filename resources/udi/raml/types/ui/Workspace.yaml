@@ -1,0 +1,15 @@
+type: object
+displayName: UI.Workspace
+description: |
+  Рабочее пространство универсального интерфейса справочников. Описывается списком элементов, формой редактирования элемента из списка
+  и родительской формой редактирования для случая когда элемент является вложенным.
+properties:
+  list:
+    type: UI.List
+  forms:
+    type: object
+    properties:
+      self:
+        type: UI.Form
+      parent:
+        type: UI.Form

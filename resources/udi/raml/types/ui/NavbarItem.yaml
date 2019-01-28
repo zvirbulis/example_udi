@@ -1,0 +1,10 @@
+type: object
+displayName: UI.NavbarItem
+description: Элемент пользовательского интерфейса описывающий ссылку в панели навигации
+properties:
+  name:
+    type: string
+    description: Заголовок пункта навигации
+  url:
+    type: string
+    description: URL рабочей области

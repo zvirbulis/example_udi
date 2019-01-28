@@ -1,0 +1,20 @@
+#%RAML 1.0
+title: KAN School UDI API
+version: v1
+mediaType: application/json
+protocols: [HTTPS]
+baseUri: http://{year}.kanschool.local/udi/
+baseUriParameters:
+  year:
+    description: Символьное представление учебного года в разрезе которого будет происходить работа
+    type: string
+    required: true
+    example: "2017"
+
+types: !include /raml/types.yaml
+traits: !include /raml/traits.yaml
+resourceTypes: !include /raml/resource_types.yaml
+
+#Resources
+/navbar: !include /raml/resources/navbar.yaml
+/workspaces: !include /raml/resources/workspaces.yaml

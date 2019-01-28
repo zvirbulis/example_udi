@@ -1,0 +1,140 @@
+{
+  "code": "StudentGroups",
+  "access": ["manager"],
+  "list": {
+    "metadata": {
+      "title": "Навчальні групи",
+      "description": "Список всіх навчальних груп"
+    },
+    "sort": {
+      "field": "StudentGroup.name",
+      "order": "asc"
+    },
+    "pagination": {
+      "per_page": 20
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "StudentGroup.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Назва",
+        "code": "StudentGroup.name",
+        "sortable": true
+      },
+      {
+        "name": "Коротка назва",
+        "code": "StudentGroup.short_name",
+        "sortable": true
+      },
+      {
+        "name": "Предмет",
+        "code": "StudentGroup.Subject.name",
+        "sortable": true
+      },
+      {
+        "name": "Сортування",
+        "code": "StudentGroup.sort",
+        "sortable": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування начальної групи"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "StudentGroup.id",
+          "StudentGroup.name",
+          "StudentGroup.short_name",
+          "StudentGroup.subject_id",
+          "StudentGroup.sort"
+        ],
+        "groups": [],
+        "fields": {
+          "StudentGroup.id": {
+            "name": "Ід",
+            "primary_key": true,
+            "code": "StudentGroup.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "StudentGroup.name": {
+            "name": "Назва",
+            "code": "StudentGroup.name",
+            "type_element": "input",
+            "type_data": "text",
+            "required": true,
+            "validation": {
+              "rules": "required|max:128",
+              "messages": {
+                "required": "Поле з назвою для навчальної групи повинно має бути заповнено",
+                "max": "Назва навчальної групи не повинна перевищувати :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "StudentGroup.short_name": {
+            "name": "Коротка назва",
+            "code": "StudentGroup.short_name",
+            "type_element": "input",
+            "type_data": "text",
+            "required": true,
+            "validation": {
+              "rules": "required|max:10",
+              "messages": {
+                "required": "Поле з назвою для навчальної групи повинно має бути заповнено",
+                "max": "Назва навчальної групи не повинна перевищувати :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "StudentGroup.subject_id": {
+            "name": "Предмет",
+            "code": "StudentGroup.subject_id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "Subject.id",
+              "label": "Subject.name"
+            }
+          },
+          "StudentGroup.sort": {
+            "name": "Сортування",
+            "code": "StudentGroup.sort",
+            "type_element": "input",
+            "value": "10"
+          }
+        },
+        "relations": []
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "exceptions": {
+    "delete-foreign-keys": [
+      "<br> - картки уроків"
+    ]
+  },
+  "_link": ""
+}

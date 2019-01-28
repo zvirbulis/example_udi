@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/instances/User.json",
+  "type": "object",
+  "title": "Користувач",
+  "description": "Дані користувача системи",
+  "required": [
+    "email",
+    "name"
+  ],
+  "properties": {
+    "id": {"$ref": "/fields/Id.json"},
+    "email": {
+      "type": "string",
+      "title": "E-mail.",
+      "description": "E-mail",
+      "format": "email",
+      "example": "foo@bar.com"
+    },
+    "name": {
+      "type": "string",
+      "title": "ПІП",
+      "description": "ПІП",
+      "example": "Василій Пупкін"
+    },
+    "active": {
+      "type": "boolean",
+      "title": "Активність",
+      "description": "Активність",
+      "default": true
+    },
+    "phone": {
+      "type": "string",
+      "title": "Телефон",
+      "description": "Телефон",
+      "example": "+380662003040"
+    },
+    "address": {
+      "type": "string",
+      "title": "Адрес",
+      "description": "Адрес",
+      "example": "м.Київ вул. Івана Гетьмана 11Б"
+    },
+    "last_auth": {
+      "type": "string",
+      "title": "Остання авторизація",
+      "description": "Дата останньої авторизації",
+      "readonly": true,
+      "example": "2015-10-11 09:10:15"
+    },
+    "created_at": {
+      "type": "string",
+      "title": "Час створення",
+      "description": "Час створення",
+      "format": "date-time",
+      "readonly": true,
+      "example": "2015-10-11 09:10:15"
+    },
+    "updated_at": {
+      "type": "string",
+      "title": "Час оновлення",
+      "description": "Час оновлення",
+      "format": "date-time",
+      "readonly": true,
+      "example": "2015-10-11 09:20:00"
+    },
+    "deleted_at": {
+      "type": "string",
+      "title": "Час видалення",
+      "description": "Час т.н. м'якого видалення",
+      "format": "date-time",
+      "readonly": true,
+      "example": "2015-10-11 09:25:01"
+    }
+  },
+  "additionalProperties": false
+}

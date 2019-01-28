@@ -1,0 +1,11 @@
+{
+  "code": "ScheduleEditor",
+  "access": ["manager"],
+  "custom": true,
+  "list": {
+    "metadata": {
+      "title": "Редактор розкладу",
+      "class_name": "hb-student-classes-list"
+    }
+  }
+}

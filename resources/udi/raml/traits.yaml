@@ -1,0 +1,17 @@
+paged: !include traits/paged.yaml
+response.base: !include traits/responses/000_base.yaml
+#2**
+response_ok: !include traits/responses/200_ok.yaml
+response.created: !include traits/responses/201_created.yaml
+response.no_content: !include traits/responses/204_no_content.yaml
+#3**
+response.not_modified: !include traits/responses/304_not_modified.yaml
+#4**
+response.bad_request: !include traits/responses/400_bad_request.yaml
+response_bad_request: !include traits/responses/400_bad_request.yaml
+response_unauthorized: !include traits/responses/401_unauthorized.yaml
+response_forbidden: !include traits/responses/403_forbidden.yaml
+response.not_found: !include traits/responses/404_not_found.yaml
+response.conflict: !include traits/responses/409_conflict.yaml
+#5**
+response.internal_server_error: !include traits/responses/500_internal_server_error.yaml

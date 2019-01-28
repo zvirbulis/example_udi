@@ -1,0 +1,127 @@
+{
+  "code": "UserGroups",
+  "access": ["manager"],
+  "list": {
+    "metadata": {
+      "title": "Категорії користувачів",
+      "description": "Список користувачів",
+      "class_name": "user-group-list"
+    },
+    "sort": {
+      "field": "UserGroup.id",
+      "order": "desc"
+    },
+    "pagination": {
+      "per_page": 20
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "UserGroup.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Назва",
+        "code": "UserGroup.name",
+        "sortable": true
+      },
+      {
+        "name": "Код",
+        "code": "UserGroup.code",
+        "sortable": true
+      },
+      {
+        "name": "Права доступу",
+        "code": "UserGroup.permissions"
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування категорій користувачів"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "UserGroup.id",
+          "UserGroup.name",
+          "UserGroup.permissions",
+          "UserGroup.code"
+        ],
+        "groups": [],
+        "fields": {
+          "UserGroup.id": {
+            "name": "ID",
+            "primary_key": true,
+            "code": "UserGroup.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "UserGroup.name": {
+            "name": "Назва",
+            "code": "UserGroup.name",
+            "type_element": "input",
+            "type_data": "text",
+            "required": true,
+            "validation": {
+              "rules": "required|max:32",
+              "messages": {
+                "required": "Назва категорії повинна бути заповненою",
+                "max": "Назва категорії не повинна перевищувати :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "UserGroup.code": {
+            "name": "Символьний код",
+            "code": "UserGroup.code",
+            "description": "",
+            "type_element": "input",
+            "type_data": "text",
+            "required": true,
+            "validation": {
+              "rules": "required",
+              "messages": {
+                "required": "Символьний код повинен бути заповненим"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "UserGroup.permissions": {
+            "name": "Права доступу",
+            "code": "UserGroup.permissions",
+            "description": "",
+            "type_element": "input",
+            "type_data": "text",
+            "value": "",
+            "errors": []
+          }
+        }
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "exceptions": {
+    "delete-foreign-keys": [
+      "<br> - користувачі"
+    ]
+  },
+  "_link": ""
+}

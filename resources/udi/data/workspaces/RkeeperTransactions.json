@@ -1,0 +1,200 @@
+{
+  "code": "RkeeperTransactions",
+  "access": [],
+  "list": {
+    "metadata": {
+      "title": "Rkeeper транзакции",
+      "class_name": "rkeeper-transactions-list"
+    },
+    "sort": {
+      "field": "RkeeperTransactions.id",
+      "order": "desc"
+    },
+    "pagination": {
+      "per_page": 10
+    },
+    "filter": {
+      "order": [
+        "RkeeperTransactions.transaction_id",
+        "RkeeperTransactions.transaction_time",
+        "RkeeperTransactions.user_id",
+        "RkeeperTransactions.type"
+      ],
+      "fields": {
+        "RkeeperTransactions.type": {
+          "type_filter": "select"
+        },
+        "RkeeperTransactions.transaction_id": {
+          "type_filter": "substring"
+        },
+        "RkeeperTransactions.transaction_time": {
+          "type_filter": "range",
+          "class_name" : "filter-by-datetime"
+        },
+        "RkeeperTransactions.user_id": {
+          "type_filter": "select"
+        }
+      }
+    },
+    "fields": [
+      {
+        "name": "ІД",
+        "code": "RkeeperTransactions.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Користувач",
+        "code": "RkeeperTransactions.User.name",
+        "sortable": true
+      },
+      {
+        "name": "ІД транзакції",
+        "code": "RkeeperTransactions.transaction_id",
+        "sortable": true
+      },
+      {
+        "name": "Дата транзакції",
+        "code": "RkeeperTransactions.transaction_time",
+        "sortable": true
+      },
+      {
+        "name": "Тип транзакції",
+        "code": "RkeeperTransactions.type",
+        "sortable": true
+      },
+      {
+        "name": "Сума транзакції",
+        "code": "RkeeperTransactions.sum",
+        "sortable": true
+      },
+      {
+        "name": "Додаткова інформація",
+        "code": "RkeeperTransactions.dop_info",
+        "sortable": true
+      }
+    ],
+    "actions": [
+      {
+        "name": "Отримати дані",
+        "code": "rkepeer_get_data",
+        "type": "custom_request",
+        "active": true,
+        "redirect": false,
+        "url": "/rkeeper/import",
+        "need_reload": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування транзакції"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "RkeeperTransactions.id",
+          "RkeeperTransactions.user_id",
+          "RkeeperTransactions.transaction_id",
+          "RkeeperTransactions.transaction_time",
+          "RkeeperTransactions.type",
+          "RkeeperTransactions.sum",
+          "RkeeperTransactions.dop_info"
+        ],
+        "groups": [],
+        "fields": {
+          "RkeeperTransactions.id": {
+            "name": "Ід",
+            "primary_key": true,
+            "code": "RkeeperTransactions.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "RkeeperTransactions.transaction_id": {
+            "name": "ID Транзакції",
+            "code": "RkeeperTransactions.transaction_id",
+            "type_element": "input",
+            "required": true
+          },
+          "RkeeperTransactions.type": {
+            "name": "Тип транзакції",
+            "code": "RkeeperTransactions.type",
+            "type_element": "select",
+            "select_values": [
+              {
+                "id": "debit",
+                "label": "Трати"
+              },
+              {
+                "id": "credit",
+                "label": "Надходження"
+              }
+            ],
+            "required": true
+          },
+          "RkeeperTransactions.transaction_time": {
+            "name": "Дата транзакції",
+            "code": "RkeeperTransactions.transaction_time",
+            "type_element": "input",
+            "type_data": "datetime-local",
+            "required": true
+          },
+          "RkeeperTransactions.sum": {
+            "name": "Сума",
+            "code": "RkeeperTransactions.sum",
+            "type_element": "input",
+            "required": true
+          },
+
+          "RkeeperTransactions.user_id": {
+            "name": "Користувач",
+            "code": "RkeeperTransactions.user_id",
+            "description": "",
+            "type_element": "select",
+            "select_settings": {
+              "id": "User.id",
+              "label": "User.name",
+              "url": "/udi/workspaces/Users/$id",
+              "autocomplete": {
+                "limit": 10,
+                "_link": ""
+              }
+            },
+            "required": true,
+            "validation": {
+              "rules": "required",
+              "messages": {
+                "required": "Користувач якого стосуєтья інцидент повинен бути вказаним"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+
+          "RkeeperTransactions.dop_info": {
+            "name": "Додаткова інформація",
+            "code": "RkeeperTransactions.dop_info",
+            "type_element": "input"
+          }
+
+        }
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "_link": ""
+}

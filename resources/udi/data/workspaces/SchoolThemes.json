@@ -1,0 +1,304 @@
+{
+  "code": "SchoolThemes",
+  "access": ["admin"],
+  "list": {
+    "metadata": {
+      "title": "Налаштування теми школи",
+      "description": "Налаштування візуальної складової сайта ",
+      "class_name": "school-theme-list"
+    },
+    "sort": {
+      "field": "SchoolTheme.id",
+      "order": "desc"
+    },
+    "pagination": {
+      "per_page": 20
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "SchoolTheme.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Назва",
+        "code": "SchoolTheme.name",
+        "sortable": true
+      },
+      {
+        "name": "Опис школи",
+        "code": "SchoolTheme.description",
+        "sortable": true
+      },
+      {
+        "name": "Активність",
+        "code": "SchoolTheme.active",
+        "sortable": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Налаштування сайту",
+        "class_name": "school-theme-edit-form"
+      },
+      "grid": {
+        "order": [
+          "SchoolTheme.id",
+          "SchoolTheme.name",
+          "SchoolTheme.description",
+          "SchoolTheme.active",
+          "SchoolTheme.menu_background_id",
+          "SchoolTheme.menu_icon_id",
+          "SchoolTheme.ico32x32_id",
+          "SchoolTheme.ico128x128_id",
+          "SchoolTheme.ico192x192_id",
+          "SchoolTheme.facebook_picture_id"
+        ],
+        "groups": [],
+        "fields": {
+          "SchoolTheme.id": {
+            "name": "Ід",
+            "primary_key": true,
+            "code": "SchoolTheme.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "SchoolTheme.name": {
+            "name": "Назва школи",
+            "code": "SchoolTheme.name",
+            "class_name": "school-theme-name",
+            "description": "Назва школи, використовуэться в почтових шаблонах",
+            "type_element": "input",
+            "required": true,
+            "validation": {
+              "rules": "required|max:255",
+              "messages": {
+                "required": "Введіть назву школи",
+                "max": "Назва не повинна перевищувати :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+
+          "SchoolTheme.description": {
+            "name": "Опис школи",
+            "code": "SchoolTheme.description",
+            "class_name": "school-theme-name",
+            "description": "Загальний опис школи",
+            "type_element": "texteditor",
+            "required": false,
+            "validation": {
+              "rules": "max:500",
+              "messages": {
+                "max": "Опис не повинен перевищувати :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "SchoolTheme.active": {
+            "name": "Активність",
+            "code": "SchoolTheme.active",
+            "type_element": "checkbox",
+            "validation": {
+              "rules": "boolean",
+              "messages": {
+                "boolean": "Значення може бути тільки 0 або 1"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "SchoolTheme.ico32x32_id": {
+            "name": "Іконка 32х32",
+            "code": "SchoolTheme.ico32x32_id",
+            "class_name": "school-theme-name",
+            "type_element": "file",
+            "description": "Іконка сайту 32х32, використовується в шапці сайту та як іконка на сайт в приладах з невеликим розширенням екрану",
+            "file_settings": {
+              "id": "File.id",
+              "label": "File.original_name",
+              "src": "File.src",
+              "size": "File.size"
+            },
+            "uploader":{
+              "code": "kanschool",
+              "disk": "public",
+              "dir": "school_theme",
+              "subdir": false,
+              "validation": {
+                "rules": "nullable|file|max:40|mimes:jpeg,png,jpg|dimensions:max_width=32,max_height=32",
+                "messages": {
+                  "file": "Необхідно задати іконку",
+                  "max": "іконка не повинна перевищувати :max Кб",
+                  "mimes": "іконка повинна бути з розширенням: jpg, png, jpeg",
+                  "dimensions": "Розміри іконки не мають перевищувати :max_widthx:max_heightpx"
+                }
+              }
+            },
+            "file_values": {},
+            "value": []
+          },
+          "SchoolTheme.ico128x128_id": {
+            "name": "Іконка 128х128",
+            "code": "SchoolTheme.ico128x128_id",
+            "class_name": "school-theme-name",
+            "type_element": "file",
+            "description": "Іконка сайту 128x128, використовується як іконка для пристроїв фірми apple",
+            "file_settings": {
+              "id": "File.id",
+              "label": "File.original_name",
+              "src": "File.src",
+              "size": "File.size"
+            },
+            "uploader":{
+              "code": "kanschool",
+              "disk": "public",
+              "dir": "school_theme",
+              "subdir": false,
+              "validation": {
+                "rules": "nullable|file|max:80|mimes:jpeg,png,jpg|dimensions:max_width=128,max_height=128",
+                "messages": {
+                  "file": "Необхідно задати іконку",
+                  "max": "іконка не повинна перевищувати :max Кб",
+                  "mimes": "іконка повинна бути з розширенням: jpg, png, jpeg",
+                  "dimensions": "Розміри іконки не мають перевищувати :max_widthx:max_heightpx"
+                }
+              }
+            },
+            "file_values": {},
+            "value": []
+          },
+          "SchoolTheme.ico192x192_id": {
+            "name": "Іконка 192х192",
+            "code": "SchoolTheme.ico192x192_id",
+            "class_name": "school-theme-name",
+            "type_element": "file",
+            "description": "Іконка сайту 192x192, використовується як іконка для пристроїв з великим розширенням екрану",
+            "file_settings": {
+              "id": "File.id",
+              "label": "File.original_name",
+              "src": "File.src",
+              "size": "File.size"
+            },
+            "uploader":{
+              "code": "kanschool",
+              "disk": "public",
+              "dir": "school_theme",
+              "subdir": false,
+              "validation": {
+                "rules": "nullable|file|max:80|mimes:jpeg,png,jpg|dimensions:max_width=192,max_height=192",
+                "messages": {
+                  "file": "Необхідно задати іконку",
+                  "max": "іконка не повинна перевищувати :max Кб",
+                  "mimes": "іконка повинна бути з розширенням: jpg, png, jpeg",
+                  "dimensions": "Розміри іконки не мають перевищувати :max_widthx:max_heightpx"
+                }
+              }
+            },
+            "file_values": {},
+            "value": []
+          },
+          "SchoolTheme.facebook_picture_id": {
+            "name": "META-дані",
+            "code": "SchoolTheme.facebook_picture_id",
+            "class_name": "school-theme-name",
+            "type_element": "file",
+            "description": "розширення до 1920х1080рх (рекомендовано 1200х640), використовується при посиланні з фейсбук",
+            "file_settings": {
+              "id": "File.id",
+              "label": "File.original_name",
+              "src": "File.src",
+              "size": "File.size"
+            },
+            "uploader":{
+              "code": "kanschool",
+              "disk": "public",
+              "dir": "school_theme",
+              "subdir": false,
+              "validation": {
+                "rules": "nullable|file|max:2000|mimes:jpeg,png,jpg|dimensions:max_width=1920,max_height=1080",
+                "messages": {
+                  "file": "Необхідно задати картинку",
+                  "max": "Картинка не повинна перевищувати :max Кб",
+                  "mimes": "Картинка повинна бути з розширенням: jpg, png, jpeg",
+                  "dimensions": "Розміри картинки не мають перевищувати :max_widthx:max_heightpx"
+                }
+              }
+            },
+            "file_values": {},
+            "value": []
+          },
+          "SchoolTheme.menu_background_id": {
+            "name": "Підкладка основного меню системи",
+            "code": "SchoolTheme.menu_background_id",
+            "class_name": "school-theme-name",
+            "type_element": "file",
+            "description": "Використовується як фон для основного меню, розширення 250х900рх",
+            "file_settings": {
+              "id": "File.id",
+              "label": "File.original_name",
+              "src": "File.src",
+              "size": "File.size"
+            },
+            "uploader":{
+              "code": "kanschool",
+              "disk": "public",
+              "dir": "school_theme",
+              "subdir": false,
+              "validation": {
+                "rules": "nullable|file|max:1000|mimes:jpeg,png,jpg|dimensions:max_width=250,max_height=900",
+                "messages": {
+                  "file": "Необхідно задати картинку",
+                  "max": "Картинка не повинна перевищувати :max Кб",
+                  "mimes": "Картинка повинна бути з розширенням: jpg, png, jpeg",
+                  "dimensions": "Розміри картинка не мають перевищувати :max_widthx:max_heightpx"
+                }
+              }
+            },
+            "file_values": {},
+            "value": []
+          },
+          "SchoolTheme.menu_icon_id": {
+            "name": "Логотим в основному меню",
+            "code": "SchoolTheme.menu_icon_id",
+            "class_name": "school-theme-name",
+            "type_element": "file",
+            "description": "Розмір зображення до 40кб, а розширення 168х168рх",
+            "file_settings": {
+              "id": "File.id",
+              "label": "File.original_name",
+              "src": "File.src",
+              "size": "File.size"
+            },
+            "uploader":{
+              "code": "kanschool",
+              "disk": "public",
+              "dir": "school_theme",
+              "subdir": false,
+              "validation": {
+                "rules": "nullable|file|max:40|mimes:jpeg,png,jpg|dimensions:max_width=168,max_height=168",
+                "messages": {
+                  "file": "Необхідно задати картинку",
+                  "max": "Картинка не повинна перевищувати :max Кб",
+                  "mimes": "Картинка повинна бути з розширенням: jpg, png, jpeg",
+                  "dimensions": "Розміри картинка не мають перевищувати :max_widthx:max_heightpx"
+                }
+              }
+            },
+            "file_values": {},
+            "value": []
+          }
+        }
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "_link": ""
+}

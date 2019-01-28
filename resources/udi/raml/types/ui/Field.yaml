@@ -1,0 +1,17 @@
+type: object
+displayName: UI.Field
+properties:
+  name:
+    type: string
+    description: Название поля
+  code:
+    type: string
+    description: |
+      Код(строковый идентификатор) поля. Должен формироваться следующим образом:
+        ```
+        <...ParentModelName?>.<ModelName>.<field_name>
+        ```
+        где:
+         - ParentModelName: родительская модель (если есть)(может быть цепочкой родительских моделей)
+         - ModelName: модель, к которой принадлежит поле
+         - field_name: поле

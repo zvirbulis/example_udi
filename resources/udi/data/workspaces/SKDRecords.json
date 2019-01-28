@@ -1,0 +1,169 @@
+{
+  "code": "SKDRecord",
+  "access": [],
+  "list": {
+    "metadata": {
+      "title": "SKD Записи",
+      "class_name": "skd-records-list"
+    },
+    "sort": {
+      "field": "SKDRecord.date",
+      "order": "desc"
+    },
+    "pagination": {
+      "per_page": 10
+    },
+    "filter": {
+      "order": [
+        "SKDRecord.user_id",
+        "SKDRecord.date",
+        "SKDRecord.hardware_id",
+        "SKDRecord.card"
+      ],
+      "fields": {
+        "SKDRecord.card": {
+          "type_filter": "substring"
+        },
+        "SKDRecord.hardware_id": {
+          "type_filter": "substring"
+        },
+        "SKDRecord.date": {
+          "type_filter": "range"
+        },
+        "SKDRecord.user_id": {
+          "type_filter": "select"
+        }
+      }
+    },
+    "fields": [
+      {
+        "name": "ІД",
+        "code": "SKDRecord.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Користувач",
+        "code": "SKDRecord.User.name",
+        "sortable": true
+      },
+      {
+        "name": "ІД події",
+        "code": "SKDRecord.msg_id",
+        "sortable": true
+      },
+      {
+        "name": "Назва події",
+        "code": "SKDRecord.msg",
+        "sortable": true
+      },
+      {
+        "name": "Дата транзакції",
+        "code": "SKDRecord.date",
+        "sortable": true
+      },
+      {
+        "name": "ІД пристрою",
+        "code": "SKDRecord.hardware_id",
+        "sortable": true
+      },
+      {
+        "name": "Пристрій",
+        "code": "SKDRecord.SKDHardware:hardware_id.title",
+        "sortable": true
+      },
+      {
+        "name": "Картка",
+        "code": "SKDRecord.card",
+        "sortable": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "access": [],
+      "metadata": {
+        "title": "Редагування запису"
+      },
+      "grid": {
+        "order": [
+          "SKDRecord.id",
+          "SKDRecord.user_id",
+          "SKDRecord.msg_id",
+          "SKDRecord.msg",
+          "SKDRecord.date",
+          "SKDRecord.hardware_id",
+          "SKDRecord.card"
+        ],
+        "groups": [],
+        "fields": {
+          "SKDRecord.id": {
+            "name": "Ід",
+            "primary_key": true,
+            "code": "SKDRecord.id",
+            "type_element": "hidden",
+            "value": "",
+            "required": true
+          },
+          "SKDRecord.user_id": {
+            "name": "Користувач",
+            "code": "SKDRecord.user_id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "User.id",
+              "label": "User.name",
+              "url": "/udi/workspaces/Users/$id",
+              "filter": "",
+              "autocomplete": {
+                "limit": 10,
+                "_link": ""
+              }
+            },
+            "select_values": [],
+            "value": []
+          },
+          "SKDRecord.msg_id": {
+            "name": "ID Події",
+            "code": "SKDRecord.msg_id",
+            "type_element": "input",
+            "value": "1",
+            "required": true
+          },
+          "SKDRecord.msg": {
+            "name": "Назва Події",
+            "code": "SKDRecord.msg",
+            "type_element": "input"
+          },
+          "SKDRecord.date": {
+            "name": "Дата події",
+            "code": "SKDRecord.date",
+            "type_element": "input",
+            "type_data": "datetime-local",
+            "validation": {
+              "rules": "date",
+              "messages": {
+                "date": "Неправильний формат дати. Правильний формат: dd/MM/YY H:i:s"
+              }
+            },
+            "required": true
+          },
+          "SKDRecord.hardware_id": {
+            "name": "ІД пристрою",
+            "code": "SKDRecord.hardware_id",
+            "type_element": "input",
+            "required": true
+          },
+          "SKDRecord.card": {
+            "name": "Номер карти",
+            "code": "SKDRecord.card",
+            "type_element": "input"
+          }
+        }
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "_link": ""
+}

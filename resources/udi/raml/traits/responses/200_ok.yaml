@@ -1,0 +1,17 @@
+responses:
+  #Сообщает об успешном выполнении запроса. Наиболее часто используемый из "успешных" статусов
+  200:
+    description: Запрос к ресурсу <<resourcePath>> успешно обработан
+    body:
+      application/json:
+        type: Response
+        properties:
+          data:
+            type: <<responseData>>
+        examples:
+          Response:
+            code: 200
+            status: success
+            message: OK
+            data: см. ниже
+          Data: <<responseDataExample>>

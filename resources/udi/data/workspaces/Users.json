@@ -1,0 +1,436 @@
+{
+  "code": "Users",
+  "access": ["manager"],
+  "list": {
+    "metadata": {
+      "title": "Користувачі",
+      "class_name": "subjects-list"
+    },
+    "categories": {
+      "levels": [
+        "UserGroup:group_id.name"
+      ],
+      "items": []
+    },
+    "sort": {
+      "field": "User.name",
+      "order": "asc"
+    },
+    "pagination": {
+      "per_page": 20
+    },
+    "filter": {
+      "order": [
+        "User.name",
+        "User.active",
+        "User.group_id",
+        "User.email",
+        "User.personal_phone",
+        "User.personal_address",
+        "User.personal_birthdate",
+        "User.id"
+      ],
+      "fields": {
+        "User.group_id": {
+          "code": "User.group_id"
+        },
+        "User.active": {
+          "type_element": "select",
+          "select_values": [
+            {
+              "id": "Y",
+              "label": "Так"
+            },
+            {
+              "id": "N",
+              "label": "Ні"
+            }
+          ]
+        },
+        "User.name": {
+          "type_filter": "substring"
+        },
+        "User.email": {
+          "type_filter": "substring"
+        },
+        "User.personal_phone": {
+          "type_filter": "substring"
+        },
+        "User.personal_address": {
+          "type_filter": "substring"
+        },
+        "User.personal_birthdate": {
+          "type_filter": "range"
+        },
+        "User.id": {
+          "type_filter": "range",
+          "type_element": "input"
+        }
+      }
+    },
+    "actions": [
+      {
+        "name": "Активувати",
+        "code": "activate",
+        "type": "update",
+        "multiple": true,
+        "settings": {
+          "primary": "User.id",
+          "values": {"User.active":"Y"}
+        }
+      },
+      {
+        "name": "Деактивувати",
+        "code": "deactivate",
+        "type": "update",
+        "multiple": true,
+        "settings": {
+          "primary": "User.id",
+          "values": {"User.active": "N"}
+        }
+      },
+      {
+        "name": "Список сотрудников",
+        "code": "stuff_list",
+        "type": "custom",
+        "active": true,
+        "redirect": true
+      },
+      {
+        "name": "Штатное расписание",
+        "code": "departments_list",
+        "type": "custom",
+        "active": true,
+        "redirect": true
+      }
+    ],
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "User.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "ПІП",
+        "code": "User.name",
+        "sortable": true
+      },
+      {
+        "name": "Активність",
+        "code": "User.active",
+        "sortable": true
+      },
+      {
+        "name": "E-mail",
+        "code": "User.email",
+        "sortable": true
+      },
+      {
+        "name": "Телефон",
+        "code": "User.personal_phone",
+        "sortable": true
+      },
+      {
+        "name": "Адрес",
+        "code": "User.personal_address",
+        "sortable": true
+      },
+      {
+        "name": "Дата народження",
+        "code": "User.personal_birthdate",
+        "sortable": true
+      },
+      {
+        "name": "Група",
+        "code": "User.UserGroup:group_id.name",
+        "sortable": true
+      },
+      {
+        "name": "Налаштування",
+        "code": "User.settings",
+        "sortable": true,
+        "default_hidden": true
+      },
+      {
+        "name": "Створений",
+        "code": "User.created_at",
+        "sortable": true,
+        "default_hidden": true
+      },
+      {
+        "name": "Оновлений",
+        "code": "User.updated_at",
+        "sortable": true,
+        "default_hidden": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування користувача",
+        "class_name": "subjects-edit-form"
+      },
+      "grid": {
+        "order": [
+          "User.id",
+          "User.name",
+          "User.active",
+          "User.email",
+          "User.invite",
+          "User.group_id",
+          "User.password",
+          "User.password_confirmation",
+          "User.personal_photo_id",
+          "User.personal_phone",
+          "User.personal_address",
+          "User.personal_birthdate",
+          "User.settings"
+        ],
+        "groups": [],
+        "actions": [
+          {
+            "name": "Авторизуватися",
+            "code": "authorize",
+            "type": "custom",
+            "redirect": true,
+            "_link": ""
+          },
+          {
+            "name": "Написати користувачу",
+            "code": "chatting",
+            "type": "custom",
+            "redirect": true,
+            "_link": ""
+          },
+          {
+            "name": "Відновити доступ",
+            "code": "restore_login",
+            "type": "custom"
+          },
+          {
+            "name": "Вислати інвайт",
+            "code": "invite",
+            "type": "custom"
+          },
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend",
+            "unique_fields": ["User.email", "User.name", "User.password", "User.password_confirmation"]
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Перейти в профіль",
+            "code": "profile",
+            "redirect": true,
+            "type": "custom",
+            "_link": ""
+          }
+        ],
+        "fields": {
+          "User.id": {
+            "name": "ІД",
+            "code": "User.id",
+            "primary_key": true,
+            "type_element": "hidden",
+            "value": ""
+          },
+          "User.name": {
+            "name": "ПІП",
+            "code": "User.name",
+            "type_element": "input",
+            "required": true,
+            "validation": {
+              "rules": "required|max:255",
+              "messages": {
+                "required": "ПІП має бути заповнено",
+                "max": "ПІП не має превищувати :max символів"
+              }
+            },
+            "value": ""
+          },
+          "User.active": {
+            "name": "Активність",
+            "code": "User.active",
+            "type_element": "checkbox",
+            "value": "Y"
+          },
+          "User.email": {
+            "name": "E-mail",
+            "code": "User.email",
+            "type_element": "input",
+            "required": true,
+            "validation": {
+              "rules": "required|max:255|email|unique",
+              "messages": {
+                "required": "E-mail повинен бути заповнений",
+                "max": "E-mail не повинен перевищувати :max символів",
+                "email": "E-mail заданий не вірно",
+                "unique": "Користувач з таким E-mail`ом вже існує в системі"
+              }
+            }
+          },
+          "User.invite": {
+            "name": "Вислати запрошення",
+            "description": "Користувач отримає листа з посиланням, за допомогою якого зможе авторизуватися на сайті",
+            "code": "User.invite",
+            "type_element": "checkbox",
+            "virtual": true,
+            "visibility": "new"
+          },
+          "User.password": {
+            "name": "Пароль",
+            "code": "User.password",
+            "description": "Не меньше 8 символів, серед яких хоча б одна велика буква та одна цифра",
+            "type_element": "input",
+            "type_data": "password",
+            "show_password": false,
+            "validation": {
+              "rules": "required|password|confirmed",
+              "messages": {
+                "required": "Для створення користувача необхідноо вказати його пароль",
+                "password": "Введений пароль має складатися не менше ніж з 8 символів, серед яких має бути принаймі одна велика буква та одна цифра",
+                "confirmed": "Вказані паролі не співпадають один з одиним"
+              }
+            }
+          },
+          "User.password_confirmation": {
+            "name": "Підтвердження паролю",
+            "code": "User.password_confirmation",
+            "virtual": true,
+            "show_password": false,
+            "type_element": "input",
+            "type_data": "password",
+            "value": ""
+          },
+          "User.personal_photo_id": {
+            "name": "Персональні фото",
+            "code": "User.personal_photo_id",
+            "description": "Розмір зображення до 300кб, а розширення до 300х300рх",
+            "type_element": "file",
+            "file_settings": {
+              "id": "File.id",
+              "label": "File.original_name",
+              "src": "File.src",
+              "size": "File.size"
+            },
+            "uploader":{
+              "code": "kanschool",
+              "disk": "public",
+              "dir": "photos",
+              "subdir": false,
+              "validation": {
+                "rules": "nullable|file|max:300|mimes:jpeg,png,jpg|dimensions:max_width=300,max_height=300",
+                "messages": {
+                  "file": "Поле з персональним фото має містити файл-картинку",
+                  "max": "Персональне фото не має перевищувати :max Кб",
+                  "mimes": "Персональне фото має бути картинкою з розширенням: jpg, png, jpeg",
+                  "dimensions": "Розміри персонального фото не мають перевищувати :max_widthx:max_heightpx"
+                }
+              }
+            },
+            "file_values": {},
+            "value": []
+          },
+          "User.personal_phone": {
+            "name": "Телефон",
+            "code": "User.personal_phone",
+            "type_element": "input",
+            "validation": {
+              "rules": "max:255",
+              "messages": {
+                "max": "Номер телефона не повинен перевищувати :max символів"
+              }
+            }
+          },
+          "User.personal_address": {
+            "name": "Адрес",
+            "code": "User.personal_address",
+            "type_element": "textarea"
+          },
+          "User.personal_birthdate": {
+            "name": "Дата народження",
+            "code": "User.personal_birthdate",
+            "type_element": "input",
+            "type_data": "date",
+            "validation": {
+              "rules": "date",
+              "messages": {
+                "date": "Неправильний формат дати. Правильний формат: dd/MM/YY"
+              }
+            }
+          },
+          "User.group_id": {
+            "name": "Група",
+            "code": "User.group_id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "UserGroup.id",
+              "label": "UserGroup.name"
+            },
+            "select_values": [],
+            "required": true,
+            "validation": {
+              "rules": "required",
+              "messages": {
+                "required": "Оберіть користуватську групу"
+              }
+            },
+            "value": ""
+          },
+          "User.settings": {
+            "name": "Налаштування",
+            "code": "User.settings",
+            "type_element": "hidden",
+            "value": ""
+          }
+        },
+        "relations": [
+          {
+            "code": "#USER_PROFILES#",
+            "name": "Дані профіля",
+            "_link": ""
+          },
+          {
+            "code": "SocialAccounts",
+            "name": "Аккаунти в соцмережах",
+            "_link": ""
+          },
+          {
+            "access": ["medic"],
+            "code": "UserIntegrations",
+            "name": "Зовнішні інтеграції",
+            "_link": ""
+          }
+        ]
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "exceptions": {
+    "delete-foreign-keys": [
+      "<br> - відсутності",
+      "<br> - оцінки",
+      "<br> - інциденти",
+      "<br> - картки уроків",
+      "<br> - rkeeper транзакції",
+      "<br> - заміни",
+      "<br> - SKD записи",
+      "<br> - акаунти соціальних мереж",
+      "<br> - профіль користувача",
+      "<br> - звіт про успішність користувача",
+      "<br> - прив'язка до одного з класів",
+      "<br> - інтеграції користувачів"
+    ]
+  },
+  "_link": ""
+}
+

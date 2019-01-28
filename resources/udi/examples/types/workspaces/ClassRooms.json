@@ -1,0 +1,97 @@
+{
+  "list": {
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "ClassRoom.id",
+        "sortable": true
+      },
+      {
+        "name": "Назва",
+        "code": "ClassRoom.name",
+        "sortable": true
+      },
+      {
+        "name": "Опис",
+        "code": "ClassRoom.description",
+        "sortable": false
+      },
+      {
+        "name": "Створений",
+        "code": "ClassRoom.created_at",
+        "sortable": true
+      },
+      {
+        "name": "Оновлений",
+        "code": "ClassRoom.updated_at",
+        "sortable": true
+      }
+    ],
+    "items": [
+      {
+        "ClassRoom.id": "1", "ClassRoom.name": "Математика", "ClassRoom.description": "", "ClassRoom.created_at": "1525525701",
+        "ClassRoom.updated_at": "1525525701"
+      },
+      {
+        "ClassRoom.id": "2", "ClassRoom.name": "Українська мова", "ClassRoom.description": "", "ClassRoom.created_at": "1525525701",
+        "ClassRoom.updated_at": "1525525701"
+      },
+      {
+        "ClassRoom.id": "3", "ClassRoom.name": "Природозновство", "ClassRoom.description": "", "ClassRoom.created_at": "1525525701",
+        "ClassRoom.updated_at": "1525525701"
+      }
+    ]
+  },
+  "forms": {
+    "self": {
+      "grid": {
+        "order": [
+          "ClassRoom.id", "ClassRoom.name", "ClassRoom.description", "ClassRoom.created_at", "ClassRoom.updated_at"
+        ],
+        "fields": {
+          "ClassRoom.id": {
+            "name": "Ід",
+            "code": "ClassRoom.id",
+            "type": "text",
+            "flags": ["readonly"],
+            "value": "1",
+            "errors": []
+          },
+          "ClassRoom.name": {
+            "name": "Назва",
+            "code": "ClassRoom.name",
+            "type": "text",
+            "flags": [],
+            "value": "Математика",
+            "errors": []
+          },
+          "ClassRoom.description": {
+            "name": "Опис",
+            "code": "ClassRoom.description",
+            "type": "textarea",
+            "flags": [],
+            "value": "",
+            "errors": []
+          },
+          "ClassRoom.created_at": {
+            "name": "Створений",
+            "code": "ClassRoom.created_at",
+            "type": "date",
+            "flags": ["readonly"],
+            "value": "1525525701",
+            "errors": []
+          },
+          "ClassRoom.updated_at": {
+            "name": "Оновлений",
+            "code": "ClassRoom.updated_at",
+            "type": "date",
+            "flags": ["readonly"],
+            "value": "1525525701",
+            "errors": []
+          }
+        }
+      }
+    },
+    "parent": {}
+  }
+}

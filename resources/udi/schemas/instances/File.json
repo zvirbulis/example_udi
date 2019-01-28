@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/instances/File.json",
+  "type": "object",
+  "title": "Файл",
+  "properties": {
+    "id": {"$ref": "/fields/Id.json"},
+    "size": {
+      "type": "integer",
+      "title": "Розмір файла",
+      "minimum": 0,
+      "readonly": true,
+      "example": "1024"
+    },
+    "content_type": {
+      "type": "string",
+      "title": "Тип вмісту",
+      "maxLength": 255,
+      "readonly": true,
+      "example": "text/xml"
+    },
+    "subdir": {
+      "type": "string",
+      "title": "Відносний шлях до папки з файлом",
+      "maxLength": 255,
+      "readonly": true,
+      "example": "abf78/"
+    },
+    "name": {
+      "type": "string",
+      "title": "Фізична назва",
+      "maxLength": 255,
+      "example": "gjhjksd1231hjk123.xml"
+    },
+    "original_name": {
+      "type": "string",
+      "title": "Оригінальна назва",
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "title": "Опис",
+      "maxLength": 255
+    },
+    "user_id": {
+      "type": "integer",
+      "title": "Ідентифікатор користувача, загрузившого файл",
+      "minimum": 1,
+      "example": "12"
+    },
+    "created_at": {
+      "type": "string",
+      "title": "Час створення",
+      "description": "Час створення",
+      "format": "date-time",
+      "readonly": true,
+      "example": "2015-10-11 09:10:15"
+    },
+    "updated_at": {
+      "type": "string",
+      "title": "Час оновлення",
+      "description": "Час оновлення",
+      "format": "date-time",
+      "readonly": true,
+      "example": "2015-10-11 09:20:00"
+    },
+    "deleted_at": {
+      "type": "string",
+      "title": "Час видалення",
+      "description": "Час т.н. м'якого видалення",
+      "format": "date-time",
+      "readonly": true,
+      "example": "2015-10-11 09:25:01"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "items": [
+    {"name": "Аудиторії", "url": "https://kanschool.local/udi/workspaces/ClassRooms"},
+    {"name": "Класи", "url": "https://kanschool.local/udi/workspaces/StudentClasses"},
+    {"name": "Предметы", "url": "https://kanschool.local/udi/workspaces/Subjects"},
+    {"name": "Нвчалдьні роки", "url": "https://kanschool.local/udi/workspaces/Years"},
+    {"name": "Навчальні плани", "url": "https://kanschool.local/udi/workspaces/LessonPlans"}
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "items": [
+    {"name": "Аудиторії", "url": "#ENV_APP_URL#/udi/workspaces/ClassRooms"},
+    {"name": "Предмети", "url": "#ENV_APP_URL#/udi/workspaces/Subjects"},
+    {"name": "Навчальні роки", "url": "#ENV_APP_URL#/udi/workspaces/Years"},
+    {"name": "Навчальні плани", "url": "#ENV_APP_URL#/udi/workspaces/StudyPlans"},
+    {"name": "Навчальні групи", "url": "#ENV_APP_URL#/udi/workspaces/StudentGroups"},
+    {"name": "Список класів", "url": "#ENV_APP_URL#/udi/workspaces/StudentClasses"},
+    {"name": "Налаштування теми", "url": "#ENV_APP_URL#/udi/workspaces/SchoolThemes"},
+    {"name": "Новини", "url": "#ENV_APP_URL#/udi/workspaces/Announcements"},
+    {"name": "Новини їдальні", "url": "#ENV_APP_URL#/udi/workspaces/CanteenAnnouncements"},
+    {"name": "Користувачі", "url": "#ENV_APP_URL#/udi/workspaces/Users"},
+    {"name": "Статті", "url": "#ENV_APP_URL#/udi/workspaces/TildaArticles"},
+    {"name": "Зовнішні інтеграції", "url": "#ENV_APP_URL#/udi/workspaces/Integrations"},
+    {"name": "Активності на уроці", "url": "#ENV_APP_URL#/udi/workspaces/LessonActivities"},
+    {"name": "Картки уроків", "url": "#ENV_APP_URL#/udi/workspaces/LessonCards"},
+    {"name": "Активності на перервах", "url": "#ENV_APP_URL#/udi/workspaces/BreakActivities"},
+    {"name": "Розклад дзвінків ", "url": "#ENV_APP_URL#/udi/workspaces/LessonNums"},
+    {"name": "Позиції в розкладі ", "url": "#ENV_APP_URL#/udi/workspaces/ScheduleSlots"},
+    {"name": "Профіль користувача", "url": "#ENV_APP_URL#/udi/workspaces/StudentProfiles"},
+    {"name": "Rkeeper транзакції", "url": "#ENV_APP_URL#/udi/workspaces/RkeeperTransactions"},
+    {"name": "SKD записи", "url": "#ENV_APP_URL#/udi/workspaces/SKDRecords"},
+    {"name": "Кафедри", "url": "#ENV_APP_URL#/udi/workspaces/Departments"},
+    {"name": "Категорії користувачів", "url": "#ENV_APP_URL#/udi/workspaces/UserGroups"},
+    {"name": "Типи предметів", "url": "#ENV_APP_URL#/udi/workspaces/SubjectTypes"},
+    {"name": "Схеми дзвінків", "url": "#ENV_APP_URL#/udi/workspaces/LessonNumSchemas"},
+    {"name": "Список інцидентів", "url": "#ENV_APP_URL#/udi/workspaces/Incidents"},
+    {"name": "Типи інцидентів", "url": "#ENV_APP_URL#/udi/workspaces/IncidentTypes"}
+  ]
+}

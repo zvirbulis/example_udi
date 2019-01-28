@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/fields/Id.json",
+  "type": "integer",
+  "title": "Ідентифікатор",
+  "description": "Унікальний ідентифікатор сутності",
+  "minimum": 1,
+  "readonly": true,
+  "example": 456
+}

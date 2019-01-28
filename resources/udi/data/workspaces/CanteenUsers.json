@@ -1,0 +1,130 @@
+{
+  "code": "CanteenUsers",
+  "access": ["canteen"],
+  "list": {
+    "metadata": {
+      "title": "Користувачі їдальні",
+      "class_name": "subjects-list"
+    },
+    "pagination": {
+      "per_page": 20
+    },
+    "sort": {
+      "field": "UserIntegration.User.name",
+      "order": "asc"
+    },
+    "filter": {
+      "order": [
+        "UserIntegration.integration_id",
+        "UserGroup.name",
+        "UserIntegration.User.name",
+        "UserIntegration.external_id"
+      ],
+      "fields": {
+        "UserIntegration.integration_id": {
+          "code": "UserIntegration.integration_id",
+          "value": 2
+        },
+        "UserGroup:group_id.name": {
+          "code": "UserIntegration.User.group_id"
+        },
+        "UserIntegration.external_id": {
+          "type_filter": "substring"
+        },
+        "UserIntegration.User.name": {
+          "name": "ПІП",
+          "code": "UserIntegration.User.name",
+          "type_element": "input",
+          "value": "",
+          "type_filter": "substring"
+        }
+      }
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "UserIntegration.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "ПІП",
+        "code": "UserIntegration.User.name",
+        "sortable": true
+      },
+      {
+        "name": "№ картки",
+        "code": "UserIntegration.external_id"
+      },
+      {
+        "name": "Баланс",
+        "code": "UserIntegration.User.canteen_balance"
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування картки",
+        "class_name": "subjects-edit-form"
+      },
+      "grid": {
+        "actions": [],
+        "order": [
+          "UserIntegration.id",
+          "UserIntegration.integration_id",
+          "UserIntegration.user_id",
+          "UserIntegration.external_id"
+        ],
+        "groups": [],
+        "fields": {
+          "UserIntegration.id": {
+            "name": "ІД",
+            "code": "UserIntegration.id",
+            "primary_key": true,
+            "type_element": "hidden"
+          },
+          "UserIntegration.integration_id": {
+            "name": "Тип інтеграції",
+            "code": "UserIntegration.integration_id",
+            "type_element": "hidden",
+            "readonly": true,
+            "value": 2
+          },
+          "UserIntegration.user_id": {
+            "name": "Користувач",
+            "code": "UserIntegration.user_id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "User.id",
+              "label": "User.name",
+              "autocomplete": {
+                "limit": 10,
+                "_link": ""
+              }
+            },
+            "select_values": [],
+            "value": []
+          },
+          "UserIntegration.external_id": {
+            "name": "№ картки",
+            "code": "UserIntegration.external_id",
+            "type_element": "input",
+            "required": true,
+            "validation": {
+              "rules": "required|unique",
+              "messages": {
+                "required": "Вкажіть № картки",
+                "unique": "Така картка вже прив'язана до іншого користувача"
+              }
+            }
+          }
+        }
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "_link": ""
+}

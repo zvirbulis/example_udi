@@ -1,0 +1,20 @@
+is: [
+    response_bad_request,
+    response.unauthorized,
+    response.forbidden,
+    response.internal_server_error,
+    response_bad_request
+]
+get:
+  description: Возвращает список <<resourcePathName>>
+  is: [ 
+    paged, 
+    response.ok,
+    response.not_found
+  ]
+post:
+  description: Создает нового <<resourcePathName | !singularize>>
+  is: [
+    response.created,
+    response.conflict,
+  ]

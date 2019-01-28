@@ -1,0 +1,7 @@
+displayName: Navbar
+get:
+  description: Возвращает список URL рабочих областей для панели навигации
+  is: [
+    response_ok: { responseData: UI.Navbar, responseDataExample: !include /examples/types/Navbar.json},
+    response_unauthorized, response.forbidden
+  ]

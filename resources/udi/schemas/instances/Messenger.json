@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/instances/Messenger.json",
+  "type": "object",
+  "title": "Медіатип - Мессенджер",
+  "allOf": [
+    {"$ref": "/instances/MediaTypeValue.json"},
+    {
+      "properties": {
+        "value": {
+          "type": "string",
+          "title": "Мессенджер",
+          "maxLength": 128,
+          "example": "skype.support"
+        }
+      }
+    }
+  ]
+}

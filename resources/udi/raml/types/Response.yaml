@@ -1,0 +1,29 @@
+type: object
+displayName: Response
+description: Стандартный ответ полученный со стороны сервера
+properties:
+  code:
+    type: number
+    description: HTTP код ответа сервера
+    example: 200
+
+  status:
+    type: string
+    description: |
+      Статус ответа сервера. Может принимать значения:
+       - success: все ок;
+       - error: ошибка приложения;
+       - fail: (ошибка сервера)
+    enum: ["success", "error", "fail"]
+
+  message:
+    type: string
+    description: |
+      Сообщение ошибки. Используется только если *status* равен **fail** или **error**
+    default: ''
+    example: DB connection error
+
+  data:
+    type: any
+    description: Данные возвращаемые вместе с ответом на запрос
+    default: ''

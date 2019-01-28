@@ -1,0 +1,60 @@
+type: collection
+displayName: Users
+description: Список пользователей системы
+get:
+  description: Формирует список пользователей взависимости от заданых параметров
+  responses:
+    200:
+      description: Возвращает информацию о пользователях
+      body:
+        type: Response
+        properties:
+          data:
+            type: UserCollection
+post:
+  description: Создает нового пользователя
+  body:
+    application/json:
+      type: Instances.User
+  responses:
+    201:
+     description: Возвращает информацию о созданном пользователе
+     body:
+       application/json:
+         type: Instances.User
+/{userId}:
+  type: instance
+  displayName: User
+  description: Пользователь системы
+  uriParameters:
+    userId:
+      displayName: Идентификатор пользователя
+      description: Уникальный идентификатор пользователя
+      type: number
+      minimum: 1
+      required: true
+      example: 1
+  get:
+    description: Возвращает информацию о пользователе
+    responses:
+      200:
+        description: |
+          Пользователь найден. 
+          Ответ содержит его основные параметры
+        body:
+          application/json:
+            type: Instances.User
+  put:
+    description: |
+      Обновляет информацию о пользователе, согласно переданным параметрам.
+    body:
+      application/json:
+        type: Instances.User
+    responses:
+      200:
+        description: |
+          Пользователь обновлен
+          Возвращается информация о пользователе
+        body:
+          application/json:
+            type: Instances.User

@@ -1,0 +1,278 @@
+{
+  "code": "Announcements",
+  "access": ["director", "head_teacher", "manager"],
+  "list": {
+    "metadata": {
+      "title": "Список новин",
+      "description": "Список новин з усіма необхідними деталями",
+      "class_name": "announcements-list"
+    },
+    "sort": {
+      "field": "Announcement.id",
+      "order": "desc"
+    },
+    "filter": {
+      "order": [
+        "Announcement.canteen_indicator",
+        "Announcement.title"
+      ],
+      "fields": {
+        "Announcement.canteen_indicator": {
+          "code": "Announcement.canteen_indicator",
+          "value": "N"
+        },
+        "Announcement.title": {
+          "code": "Announcement.title",
+          "type_filter": "substring"
+        }
+      }
+    },
+    "pagination": {
+      "per_page": 20
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "Announcement.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Назва",
+        "code": "Announcement.title",
+        "sortable": true
+      },
+      {
+        "name": "Картинка",
+        "code": "Announcement.picture_id",
+        "sortable": false
+      },
+      {
+        "name": "Посилання",
+        "code": "Announcement.link",
+        "sortable": false
+      },
+      {
+        "name": "Активність",
+        "code": "Announcement.active",
+        "sortable": false
+      },
+      {
+        "name": "Коротке представлення",
+        "code": "Announcement.short_view",
+        "sortable": false
+      },
+      {
+        "name": "Відповідальні користувачі",
+        "code": "Announcement.AnnouncementUser.User.name",
+        "sortable": false
+      },
+      {
+        "name": "Створено",
+        "code": "Announcement.created_at",
+        "sortable": true
+      },
+      {
+        "name": "Оновлено",
+        "code": "Announcement.updated_at",
+        "sortable": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування новин",
+        "class_name": "announcements-edit-form"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "Announcement.id",
+          "Announcement.title",
+          "Announcement.description",
+          "Announcement.link",
+          "Announcement.picture_id",
+          "Announcement.active",
+          "Announcement.short_view",
+          "Announcement.AnnouncementUser.user_id",
+          "Announcement.created_at",
+          "Announcement.updated_at"
+        ],
+        "groups": [
+          {
+            "class_name": "main-panel",
+            "order": [
+              "Announcement.title",
+              "Announcement.link",
+              "Announcement.picture_id",
+              "Announcement.active",
+              "Announcement.short_view",
+              "Announcement.AnnouncementUser.user_id"
+            ]
+          },
+          {
+            "class_name": "main-panel",
+            "order": [
+              "Announcement.description"
+            ]
+          },
+          {
+            "class_name": "hidden-panel",
+            "order": [
+              "Announcement.id",
+              "Announcement.created_at",
+              "Announcement.updated_at"
+            ]
+          }
+        ],
+        "fields": {
+          "Announcement.id": {
+            "name": "Ід",
+            "primary_key": true,
+            "code": "Announcement.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "Announcement.title": {
+            "name": "Заголовок",
+            "code": "Announcement.title",
+            "class_name": "class-room-name",
+            "type_element": "textarea",
+            "required": true,
+            "validation": {
+              "rules": "required|max:255",
+              "messages": {
+                "required": "Введіть заголовок для новини",
+                "max": "Заголовок не повинен перевищувати :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "Announcement.link": {
+            "name": "Посилання",
+            "code": "Announcement.link",
+            "class_name": "class-room-name",
+            "type_element": "textarea",
+            "validation": {
+              "rules": "max:2048",
+              "messages": {
+                "max": "Посилання не має перевищувати :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "Announcement.picture_id": {
+            "name": "Картинка",
+            "code": "Announcement.picture_id",
+            "class_name": "class-room-name",
+            "type_element": "file",
+            "description": "Розмір зображення до 4Мб, а розширення до 2000х2000рх",
+            "file_settings": {
+              "id": "File.id",
+              "label": "File.original_name",
+              "src": "File.src",
+              "size": "File.size"
+            },
+            "uploader":{
+              "code": "kanschool",
+              "disk": "public",
+              "dir": "announcements",
+              "subdir": false,
+              "validation": {
+                "rules": "nullable|file|max:4000|mimes:jpeg,png,jpg|dimensions:max_width=2000,max_height=2000",
+                "messages": {
+                  "file": "Поле з картинкою для статті повинне містити файл-картинку",
+                  "max": "Картинка для статті не повинна перевищувати :max Кб",
+                  "mimes": "Картинка для статті повинна бути з розширенням: jpg, png, jpeg",
+                  "dimensions": "Розміри картинки для статті не мають перевищувати :max_widthx:max_heightpx"
+                }
+              }
+            },
+            "file_values": {},
+            "value": []
+          },
+          "Announcement.description": {
+            "name": "Текст",
+            "code": "Announcement.description",
+            "class_name": "class-room-name",
+            "type_element": "texteditor",
+            "required": true,
+            "validation": {
+              "rules": "required",
+              "messages": {
+                "required": "Текст новини не повинен бути порожнім"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "Announcement.active": {
+            "name": "Активність",
+            "code": "Announcement.active",
+            "class_name": "class-room-name",
+            "type_element": "checkbox",
+            "required": false,
+            "value": 1,
+            "errors": []
+          },
+          "Announcement.short_view": {
+            "name": "Коротке представлення",
+            "description": "Відображає картинку в скороченій формі, при перегляді є можливість переглянути картинку повністю",
+            "code": "Announcement.short_view",
+            "class_name": "class-room-name",
+            "type_element": "checkbox",
+            "required": false,
+            "value": 0,
+            "errors": []
+          },
+          "Announcement.AnnouncementUser.user_id": {
+            "name": "Відповідальні користувачі",
+            "code": "Announcement.AnnouncementUser.user_id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "User.id",
+              "label": "User.name"
+            },
+            "select_values": [
+
+            ],
+            "multiple": true,
+            "value": []
+          },
+          "Announcement.created_at": {
+            "name": "Створено",
+            "code": "Announcement.created_at",
+            "type_element": "hidden",
+            "value": "",
+            "errors": []
+          },
+          "Announcement.updated_at": {
+            "name": "Оновлено",
+            "code": "Announcement.updated_at",
+            "type_element": "hidden",
+            "value": "",
+            "errors": []
+          }
+        }
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "_link": ""
+}

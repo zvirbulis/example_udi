@@ -1,0 +1,111 @@
+{
+  "code": "IncidentTypes",
+  "access": ["medic", "manager", "curator"],
+  "list": {
+    "metadata": {
+      "title": "Типи інцидентів",
+      "description": "Перелік всіх типів інцидентів",
+      "class_name": "type-of-incidents-list"
+    },
+    "sort": {
+      "field": "IncidentType.name",
+      "order": "asc"
+    },
+    "pagination": {
+      "per_page": 20
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "IncidentType.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Назва",
+        "code": "IncidentType.name",
+        "sortable": true
+      },
+      {
+        "name": "Сортування",
+        "code": "IncidentType.sort",
+        "sortable": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування типыв інцидентів"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "IncidentType.id",
+          "IncidentType.name",
+          "IncidentType.sort"
+        ],
+        "groups": [],
+        "fields": {
+          "IncidentType.id": {
+            "name": "ID",
+            "primary_key": true,
+            "code": "IncidentType.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "IncidentType.name": {
+            "name": "Назва",
+            "code": "IncidentType.name",
+            "type_element": "input",
+            "type_data": "text",
+            "required": true,
+            "validation": {
+              "rules": "required|max:255",
+              "messages": {
+                "required": "Назва категорії повинна бути заповненою",
+                "max": "Назва категорії не повинна перевищувати :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "IncidentType.sort": {
+            "name": "Сортування",
+            "code": "IncidentType.sort",
+            "type_element": "input",
+            "type_data": "integer",
+            "validation": {
+              "rules": "integer",
+              "messages": {
+                "integer": " Значення поля має бути числом"
+              }
+            },
+            "value": "10",
+            "errors": []
+          }
+        }
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "exceptions": {
+    "delete-foreign-keys": [
+      "<br> - інциденти"
+    ]
+  },
+  "_link": ""
+}

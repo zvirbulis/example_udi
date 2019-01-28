@@ -1,0 +1,144 @@
+{
+  "code": "StudentProfiles",
+  "access": ["manager"],
+  "list": {
+    "metadata": {
+      "title": "Профіль учня",
+      "description": "Перегляд та редагування даних користувача",
+      "class_name": "subjects-list"
+    },
+    "sort": {
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "StudentProfile.user_id",
+        "primary_key": true,
+        "sortable": true,
+        "default_hidden": true
+      },
+      {
+        "name": "Батьки",
+        "code": "StudentProfile:student_id.StudentStudentParent.User:student_parent_id.name"
+      },
+      {
+        "name": "Медична інформація",
+        "code": "StudentProfile.medical_information"
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування профілю користувача"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "StudentProfile.user_id",
+          "StudentProfile:student_id.StudentStudentParent.student_parent_id",
+          "StudentProfile.medical_information",
+          "StudentProfile.medical_files_id"
+        ],
+        "groups": [
+        ],
+        "fields": {
+          "StudentProfile.user_id": {
+            "name": "ІД користувача",
+            "code": "StudentProfile.user_id",
+            "primary_key": true,
+            "type_element": "hidden",
+            "value": ""
+          },
+          "StudentProfile:student_id.StudentStudentParent.student_parent_id": {
+            "name": "Батьки",
+            "code": "StudentProfile:student_id.StudentStudentParent.student_parent_id",
+            "type_element": "select",
+            "multiple": true,
+            "select_settings": {
+              "id": "User.id",
+              "label": "User.name",
+              "url": "/udi/workspaces/Users/$id",
+              "filter": "User.group_id::5",
+              "buttons": [
+                {
+                  "target": "_blank",
+                  "title": "Додати користувача",
+                  "_link": "/udi/workspaces/Users"
+                },
+                {
+                  "target": "popup:form",
+                  "title": "Додати одного з батьків (швидко)",
+                  "_link": "/udi/workspaces/Parents"
+                }
+              ],
+              "autocomplete": {
+                "limit": 10,
+                "_link": ""
+              }
+            },
+            "select_values": [],
+            "value": []
+          },
+          "StudentProfile.medical_information": {
+            "name": "Медична інформація",
+            "code": "StudentProfile.medical_information",
+            "description": "Вся важлива медична інформація про студента (алергія, протипоказання та інше)",
+            "type_element": "texteditor",
+            "type_data": "text",
+            "errors": [],
+            "value": ""
+          },
+          "StudentProfile.medical_files_id": {
+            "name": "Медицинские файлы",
+            "code": "StudentProfile.medical_files_id",
+            "class_name": "class-room-name",
+            "type_element": "file",
+            "multiple": true,
+            "description": "",
+            "file_settings": {
+              "id": "File.id",
+              "label": "File.original_name",
+              "src": "File.src",
+              "size": "File.size"
+            },
+            "uploader":{
+              "code": "kanschool",
+              "disk": "public",
+              "dir": "studentprofiles",
+              "subdir": false,
+              "validation": {
+                "rules": "nullable|file|max:10000|mimes:jpeg,png,jpg,pdf,doc,docx",
+                "messages": {
+                  "file": "Поле повинне містити файл",
+                  "max": "Файл не повинен перевищувати :max Кб",
+                  "mimes": "Файл повиннен бути з розширенням: jpg, png, jpeg,pdf,doc,docx"
+                }
+              }
+            },
+            "file_values": {},
+            "value": []
+          }
+        }
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "exceptions": {
+    "create-duplicate-entry": "У вибраного користувача вже є профіль. Відредагуйте існуючий профіль або видаліть та створіть новий"
+  },
+  "_link": ""
+}

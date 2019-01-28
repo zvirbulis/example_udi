@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/instances/MediaType.json",
+  "type": "object",
+  "title": "Медіатип",
+  "description": "Дані про медіатип",
+  "properties": {
+    "id": {"$ref": "/fields/Id.json"},
+    "name": {
+      "type": "string",
+      "title": "Назва",
+      "minimum": 1,
+      "maximum": 128
+    },
+    "type": {
+      "type": "string",
+      "title": "Тип",
+      "minimum": 1,
+      "maximum": 32,
+      "enum": ["email", "phone", "messenger"]
+    }
+  }
+}

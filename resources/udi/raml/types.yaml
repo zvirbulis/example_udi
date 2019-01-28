@@ -1,0 +1,14 @@
+Response: !include types/Response.yaml
+#UI
+UI.Field: !include types/ui/Field.yaml
+UI.Form: !include types/ui/Form.yaml
+UI.FormField: !include types/ui/FormField.yaml
+UI.FormGrid: !include types/ui/FormGrid.yaml
+UI.List: !include types/ui/List.yaml
+UI.ListField: !include types/ui/ListField.yaml
+UI.ListItem: !include types/ui/ListItem.yaml
+UI.Navbar: !include types/ui/Navbar.yaml
+UI.NavbarItem: !include types/ui/NavbarItem.yaml
+UI.Workspace: !include types/ui/Workspace.yaml
+#Workspaces
+Workspaces.ClassRooms: !include /schemas/types/workspaces/ClassRooms.json

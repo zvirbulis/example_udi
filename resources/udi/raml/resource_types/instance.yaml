@@ -1,0 +1,28 @@
+is: [
+    response.unauthorized,
+    response.forbidden,
+    response.not_found,
+    response.internal_server_error
+]
+get:
+  description: Возвращает данные о <<resourcePathName | !singularize>>
+  is: [ 
+    response.ok
+  ]
+put:
+  description: Заменяет ресурс <<resourcePathName | !singularize>>
+  is: [
+    response.ok,
+    response.bad_request
+  ]
+patch:
+  description: Обновляет поля ресурса <<resourcePathName | !singularize>>
+  is: [
+    response.ok,
+    response.bad_request
+  ]
+delete:
+  description: Удаляет ресурс <<resourcePathName | !singularize>>
+  is: [
+    response.no_content
+  ] 

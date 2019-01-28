@@ -1,0 +1,113 @@
+{
+  "code": "Integrations",
+  "access": ["manager"],
+  "list": {
+    "metadata": {
+      "title": "Список зовнішніх інтеграцій",
+      "class_name": "subjects-list"
+    },
+    "sort": {
+      "field": "Integration.id",
+      "order": "desc"
+    },
+    "pagination": {
+      "per_page": 20
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "Integration.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Назва",
+        "code": "Integration.name",
+        "sortable": false
+      },
+      {
+        "name": "Символьний код",
+        "code": "Integration.code",
+        "sortable": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування зовнішньої інтеграції"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "Integration.id",
+          "Integration.name",
+          "Integration.code"
+        ],
+        "groups": [],
+        "fields": {
+          "Integration.id": {
+            "name": "Ід",
+            "primary_key": true,
+            "code": "Integration.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "Integration.name": {
+            "name": "Назва",
+            "code": "Integration.name",
+            "type_element": "input",
+            "type_data": "text",
+            "required": true,
+            "validation": {
+              "rules": "required|max:64",
+              "messages": {
+                "required": "Назва інтеграції повинна бути заповненою",
+                "max": "Назва інтеграції не повинна перевищувати :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "Integration.code": {
+            "name": "Символьний код",
+            "code": "Integration.code",
+            "description": "",
+            "type_element": "input",
+            "required": true,
+            "validation": {
+              "rules": "required|max:64|unique",
+              "messages": {
+                "required": "Символьний код повинен бути заповненим",
+                "integer": "Символьний код не повинен перевищувать :max символів",
+                "unique": "Зовнішня інтеграція з таким сивольним кодом вже існує в системі"
+              }
+            },
+            "value": "",
+            "errors": []
+          }
+        }
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "exceptions": {
+    "delete-foreign-keys": [
+      "<br> - інтеграції користувачів"
+    ]
+  },
+  "_link": ""
+}

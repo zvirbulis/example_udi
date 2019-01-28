@@ -1,0 +1,16 @@
+responses:
+  # Успешное создание ресурса. Вместе с этим статусом необходимо также передавать заголовок Location,
+  # в котором указана ссылка на созданный ресурс
+  201: 
+    description: Ресурс успешно создан
+    headers:
+      Location:
+        description: 'Ссылка на созданный ресурс <<resourcePathName | !singularize>>'
+        type: string
+        required: true
+        example: <<resourcePathName>>/13
+    body:
+      application/json:
+        type: Response
+        properties:
+          data: <<responseData>>

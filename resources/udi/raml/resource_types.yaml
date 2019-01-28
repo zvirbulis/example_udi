@@ -1,0 +1,2 @@
+collection: !include resource_types/collection.yaml
+instance: !include resource_types/instance.yaml

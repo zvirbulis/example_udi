@@ -1,0 +1,542 @@
+{
+  "access": ["teacher", "manager", "head_teacher", "medic", "director", "canteen", "curator"],
+  "sort": false,
+  "groups": {
+    "resourses": {
+      "header": "<b>Ресурси школи</b>",
+      "sub_header":"",
+      "heading_text":"",
+      "text":"",
+      "header_url":"#ENV_APP_URL#/udi/workspaces/Announcements",
+      "list": [
+        {
+          "name": "Аудиторії",
+          "url": "#ENV_APP_URL#/udi/workspaces/ClassRooms",
+          "access": ["manager"]
+        },
+        {
+          "name": "Предмети",
+          "url": "#ENV_APP_URL#/udi/workspaces/Subjects",
+          "access":[
+            "manager"
+          ]
+        },
+        {
+          "name": "Типи предметів",
+          "url": "#ENV_APP_URL#/udi/workspaces/SubjectTypes",
+          "access":[
+            "manager"
+          ]
+        },
+        {
+          "name": "Список класів",
+          "url": "#ENV_APP_URL#/udi/workspaces/StudentClasses",
+          "access":[
+            "manager"
+          ]
+        },
+        {
+          "name": "Області знань",
+          "url":"#ENV_APP_URL#/udi/workspaces/KnowledgeRealms",
+          "access":[
+            "head_teacher", "manager"
+          ]
+        },
+        {
+          "name": "Типи спеціальних оцінок",
+          "url": "#ENV_APP_URL#/udi/workspaces/SpecialGradeTypes",
+          "access":[
+            "manager"
+          ]
+        },
+        {
+          "name": "Кафедри",
+          "url": "#ENV_APP_URL#/udi/workspaces/Departments",
+          "access":[
+            "manager"
+          ]
+        },
+        {
+          "name": "Категорії користувачів",
+          "url": "#ENV_APP_URL#/udi/workspaces/UserGroups",
+          "access": [
+            "manager"
+          ]
+        },
+        {
+          "name": "Схеми дзвінків",
+          "url": "#ENV_APP_URL#/udi/workspaces/LessonNumSchemas",
+          "access":[
+            "manager"
+          ]
+        },
+        {
+          "name": "Потоки",
+          "url": "#ENV_APP_URL#/udi/workspaces/Streams",
+          "access":[
+            "head_teacher", "manager"
+          ]
+        },
+        {
+          "name": "Навчальні групи",
+          "url": "#ENV_APP_URL#/udi/workspaces/StudentGroups",
+          "access":[
+            "manager"
+          ]
+        },
+        {
+          "name": "Типи інцидентів",
+          "url":"#ENV_APP_URL#/udi/workspaces/IncidentTypes",
+          "access":[
+            "medic", "manager", "curator"
+          ]
+        }
+      ]
+    },
+    "admin": {
+      "header":"Адміністрування",
+      "sub_header":"",
+      "heading_text":"",
+      "text":"",
+      "header_url":"#ENV_APP_URL#/udi/workspaces/Announcements",
+      "list":[
+        {
+          "name": "Користувачі",
+          "url":"#ENV_APP_URL#/udi/workspaces/Users",
+          "access":[
+            "manager"
+          ]
+        },
+        {
+          "name": "Налаштування прав доступу",
+          "url":"#ENV_APP_URL#/accessrules",
+          "access":[]
+        }
+      ]
+    },
+    "pic":{
+      "header":"",
+      "sub_header":"",
+      "heading_text":"",
+      "text":"",
+      "header_url":"#ENV_APP_URL#/udi/workspaces/Announcements",
+      "list": []
+    },
+    "info":{
+      "header":"Інформація",
+      "sub_header":"",
+      "heading_text":"",
+      "text":"",
+      "header_url":"#ENV_APP_URL#/udi/workspaces/Announcements",
+      "list":[
+        {
+          "name": "Новини",
+          "url":"#ENV_APP_URL#/udi/workspaces/Announcements",
+          "access":[
+            "director", "head_teacher", "manager"
+          ]
+        },
+        {
+          "name":"Новини їдальні",
+          "url":"#ENV_APP_URL#/udi/workspaces/CanteenAnnouncements",
+          "access":[
+            "manager", "canteen"
+          ]
+        },
+        {
+          "name": "Статті",
+          "url":"#ENV_APP_URL#/udi/workspaces/TildaArticles",
+          "access":[
+            "manager"
+          ]
+        },
+        {
+          "name": "Список інцидентів",
+          "url":"#ENV_APP_URL#/udi/workspaces/Incidents",
+          "access":[
+            "medic", "manager", "curator"
+          ]
+        }
+      ]
+    },
+    "articles":{
+      "header":"Статті",
+      "sub_header":"",
+      "heading_text":"Гімназія А+ 3D тур",
+      "text":"Бренд «А+» - це гарант якісної освіти, яка доступна для дітей різного віку! Мережа Академії",
+      "header_url":"#ENV_APP_URL#/udi/workspaces/Announcements",
+      "list":[
+        {
+          "name": "Всі статтi",
+          "url":"#ENV_APP_URL#/udi/workspaces/TildaArticles",
+          "access":[
+            "manager"
+          ]
+        }
+      ]
+    },
+    "news":{
+      "header":"Новини",
+      "sub_header":"",
+      "heading_text":"Вступна компанія до гімназії А+",
+      "text":"Наша школа для мотивованих і творчих дітей, що дає високий рівень академічних знань, цілеспрямовано",
+      "header_url":"#ENV_APP_URL#/udi/workspaces/Announcements",
+      "list":[
+        {
+          "name": "Всі новини",
+          "url":"#ENV_APP_URL#/udi/workspaces/Announcements",
+          "access":[
+            "director", "head_teacher", "manager"
+          ]
+        }
+      ]
+    },
+    "education_plans":{
+      "header":"Навчальний процес",
+      "sub_header":"",
+      "heading_text":"",
+      "header_url":"",
+      "text":"",
+      "access":[
+        "head_teacher",
+        "teacher"
+      ],
+      "list":[
+        {
+          "name": "Навчальні плани",
+          "url":"#ENV_APP_URL#/udi/workspaces/StudyPlans",
+          "access":[
+            "head_teacher",
+            "teacher"
+          ]
+        },
+        {
+          "name": "Навчальні роки",
+          "url":"#ENV_APP_URL#/udi/workspaces/Years",
+          "access":[
+            "manager"
+          ]
+        },
+        {
+          "name": "Активності на уроці",
+          "url":"#ENV_APP_URL#/udi/workspaces/LessonActivities",
+          "access":[
+            "head_teacher", "manager"
+          ]
+        },
+        {
+          "name": "Розклад дзвінків",
+          "url":"#ENV_APP_URL#/udi/workspaces/LessonNums",
+          "access": [
+            "head_teacher", "manager"
+          ]
+        },
+        {
+          "name": "Позиції в розкладі",
+          "url":"#ENV_APP_URL#/udi/workspaces/ScheduleSlots",
+          "access": [
+            "manager"
+          ]
+        }
+      ]
+    },
+    "scheuldue_positions":{
+      "header":"",
+      "sub_header":"",
+      "heading_text":"",
+      "text":"",
+      "access": [],
+      "header_url":"",
+      "list":[]
+    },
+    "system_administration":{
+      "header":"Системне адміністрування",
+      "sub_header":"",
+      "heading_text":"",
+      "text":"",
+      "header_url":"#ENV_APP_URL#/udi/workspaces/Announcements",
+      "list":[
+        {
+          "name": "Брендування",
+          "url": "#ENV_APP_URL#/udi/workspaces/SchoolThemes",
+          "access": []
+        }
+      ]
+    },
+    "external_integrations": {
+      "header":"Зовнішні інтеграції",
+      "sub_header":"",
+      "heading_text":"",
+      "text":"",
+      "header_url":"#ENV_APP_URL#/udi/workspaces/Announcements",
+      "list":[
+        {
+          "name": "Користувачі їдальні",
+          "url":"#ENV_APP_URL#/udi/workspaces/CanteenUsers",
+          "access":[
+            "canteen"
+          ]
+        },
+        {
+          "name": "Користувачі СКД",
+          "url":"#ENV_APP_URL#/udi/workspaces/SKDUsers",
+          "access":[
+            "head_teacher", "manager"
+          ]
+        },
+        {
+          "name": "Зовнішні інтеграції",
+          "url":"#ENV_APP_URL#/udi/workspaces/Integrations",
+          "access": [
+            "manager"
+          ]
+        },
+        {
+          "name": "Rkeeper транзакції",
+          "url":"#ENV_APP_URL#/udi/workspaces/RkeeperTransactions",
+          "access": []
+        },
+        {
+          "name": "SKD записи",
+          "url":"#ENV_APP_URL#/udi/workspaces/SKDRecords-r",
+          "access": [
+            "!admin",
+            "manager"
+          ]
+        },
+        {
+          "name": "SKD записи",
+          "url":"#ENV_APP_URL#/udi/workspaces/SKDRecords",
+          "access": [
+            "admin"
+          ]
+        },
+        {
+          "name": "SKD пристрої",
+          "url":"#ENV_APP_URL#/udi/workspaces/SKDHardware",
+          "access": [
+            "manager"
+          ]
+        }
+      ]
+    }
+  },
+
+
+  "items":[
+    {
+      "name":"Аудиторії",
+      "url":"#ENV_APP_URL#/udi/workspaces/ClassRooms",
+      "access":[
+        "manager"
+      ]
+    },
+    {
+      "name":"Предмети",
+      "url":"#ENV_APP_URL#/udi/workspaces/Subjects",
+      "access":[
+        "manager"
+      ]
+    },
+    {
+      "name":"Типи предметів",
+      "url":"#ENV_APP_URL#/udi/workspaces/SubjectTypes",
+      "access":[
+        "manager"
+      ]
+    },
+    {
+      "name":"Навчальні роки",
+      "url":"#ENV_APP_URL#/udi/workspaces/Years",
+      "access":[
+        "manager"
+      ]
+    },
+    {
+      "name":"Навчальні плани",
+      "url":"#ENV_APP_URL#/udi/workspaces/StudyPlans",
+      "access":[
+        "head_teacher",
+        "teacher"
+      ]
+    },
+    {
+      "name":"Навчальні групи",
+      "url":"#ENV_APP_URL#/udi/workspaces/StudentGroups",
+      "access":[
+        "manager"
+      ]
+    },
+    {
+      "name":"<b>Список класів</b>",
+      "url":"#ENV_APP_URL#/udi/workspaces/StudentClasses",
+      "access":[
+        "manager"
+      ]
+    },
+    {
+      "name":"<b>Новини</b>",
+      "url":"#ENV_APP_URL#/udi/workspaces/Announcements",
+      "access":[
+        "director", "head_teacher", "manager"
+      ]
+    },
+    {
+      "name":"Новини їдальні",
+      "url":"#ENV_APP_URL#/udi/workspaces/CanteenAnnouncements",
+      "access":[
+        "manager", "canteen"
+      ]
+    },
+    {
+      "name":"<b>Користувачі</b>",
+      "url":"#ENV_APP_URL#/udi/workspaces/Users",
+      "access":[
+        "manager"
+      ]
+    },
+    {
+      "name":"Користувачі їдальні",
+      "url":"#ENV_APP_URL#/udi/workspaces/CanteenUsers",
+      "access":[
+        "canteen"
+      ]
+    },
+    {
+      "name":"Користувачі СКД",
+      "url":"#ENV_APP_URL#/udi/workspaces/SKDUsers",
+      "access":[
+        "head_teacher", "manager"
+      ]
+    },
+    {
+      "name":"Статті",
+      "url":"#ENV_APP_URL#/udi/workspaces/TildaArticles",
+      "access":[
+        "manager"
+      ]
+    },
+    {
+      "name":"Зовнішні інтеграції",
+      "url":"#ENV_APP_URL#/udi/workspaces/Integrations",
+      "access": [
+        "manager"
+      ]
+    },
+    {
+      "name":"<b>Активності на уроці</b>",
+      "url":"#ENV_APP_URL#/udi/workspaces/LessonActivities",
+      "access":[
+        "head_teacher", "manager"
+      ]
+    },
+    {
+      "name":"Розклад дзвінків ",
+      "url":"#ENV_APP_URL#/udi/workspaces/LessonNums",
+      "access": [
+        "head_teacher", "manager"
+      ]
+    },
+    {
+      "name":"Позиції в розкладі ",
+      "url":"#ENV_APP_URL#/udi/workspaces/ScheduleSlots",
+      "access": [
+        "manager"
+      ]
+    },
+    {
+      "name":"Rkeeper транзакції",
+      "url":"#ENV_APP_URL#/udi/workspaces/RkeeperTransactions",
+      "access": []
+    },
+    {
+      "name":"Rkeeper транзакції",
+      "url":"#ENV_APP_URL#/udi/workspaces/RkeeperTransactions-r",
+      "access": [
+        "!admin",
+        "manager"
+      ]
+    },
+    {
+      "name":"SKD записи",
+      "url":"#ENV_APP_URL#/udi/workspaces/SKDRecords",
+      "access": []
+    },
+    {
+      "name":"SKD записи",
+      "url":"#ENV_APP_URL#/udi/workspaces/SKDRecords-r",
+      "access": [
+        "!admin",
+        "manager"
+      ]
+    },
+    {
+      "name":"SKD пристрої",
+      "url":"#ENV_APP_URL#/udi/workspaces/SKDHardware",
+      "access": [
+        "manager"
+      ]
+    },
+    {
+      "name":"Кафедри",
+      "url":"#ENV_APP_URL#/udi/workspaces/Departments",
+      "access":[
+        "manager"
+      ]
+    },
+    {
+      "name":"Категорії користувачів",
+      "url":"#ENV_APP_URL#/udi/workspaces/UserGroups",
+      "access": [
+        "manager"
+      ]
+    },
+    {
+      "name":"Схеми дзвінків",
+      "url":"#ENV_APP_URL#/udi/workspaces/LessonNumSchemas",
+      "access":[
+        "manager"
+      ]
+    },
+    {
+      "name":"Потоки",
+      "url":"#ENV_APP_URL#/udi/workspaces/Streams",
+      "access":[
+        "head_teacher", "manager"
+      ]
+    },
+    {
+      "name":"Список інцидентів",
+      "url":"#ENV_APP_URL#/udi/workspaces/Incidents",
+      "access":[
+        "medic", "manager", "curator"
+      ]
+    },
+    {
+      "name":"Типи інцидентів",
+      "url":"#ENV_APP_URL#/udi/workspaces/IncidentTypes",
+      "access":[
+        "medic", "manager", "curator"
+      ]
+    },
+    {
+      "name":"<b>Налаштування прав доступу</b>",
+      "url":"#ENV_APP_URL#/accessrules",
+      "access":[]
+    },
+    {
+      "name":"Області знань",
+      "url":"#ENV_APP_URL#/udi/workspaces/KnowledgeRealms",
+      "access":[
+        "head_teacher", "manager"
+      ]
+    },
+    {
+      "name":"Типи спеціальних оцінок",
+      "url":"#ENV_APP_URL#/udi/workspaces/SpecialGradeTypes",
+      "access":[
+        "manager"
+      ]
+    }
+  ]
+}

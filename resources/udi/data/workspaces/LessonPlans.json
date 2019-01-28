@@ -1,0 +1,156 @@
+{
+  "code": "LessonPlans",
+  "access": ["head_teacher", "teacher", "manager"],
+  "list": {
+    "metadata": {
+      "title": "План вчителя",
+      "description": "Інформація про навчальні плани для класу по предмету",
+      "class_name": "subjects-list"
+    },
+    "sort": {
+      "field": "LessonPlan.lesson_num",
+      "order": "asc"
+    },
+    "pagination": {
+      "per_page": 20
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "LessonPlan.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Номер урока",
+        "code": "LessonPlan.lesson_num",
+        "sortable": true
+      },
+      {
+        "name": "Тема",
+        "code": "LessonPlan.topic"
+      },
+      {
+        "name": "Опис",
+        "code": "LessonPlan.description"
+      },
+      {
+        "name": "Домашнє завдання",
+        "code": "LessonPlan.homework"
+      },
+      {
+        "name": "Час на ДЗ",
+        "code": "LessonPlan.work_time"
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування плану урока"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "LessonPlan.id",
+          "LessonPlan.lesson_num",
+          "LessonPlan.topic",
+          "LessonPlan.description",
+          "LessonPlan.homework",
+          "LessonPlan.work_time"
+        ],
+        "groups": [],
+        "fields": {
+          "LessonPlan.id": {
+            "name": "Ід",
+            "primary_key": true,
+            "code": "LessonPlan.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "LessonPlan.lesson_num": {
+            "name": "Номер урока",
+            "code": "LessonPlan.lesson_num",
+            "type_element": "input",
+            "required": true,
+            "validation": {
+              "rules": "required|integer",
+              "messages": {
+                "required": "Номер урока повинен бути заповненим",
+                "integer": "Номер урока повинен бути цілим числом"
+              }
+            },
+            "errors": [],
+            "value": ""
+          },
+          "LessonPlan.topic": {
+            "name": "Тема",
+            "code": "LessonPlan.topic",
+            "type_element": "textarea",
+            "type_data": "text",
+            "required": true,
+            "validation": {
+              "rules": "required|string|max:512",
+              "messages": {
+                "required": "Тема урока повинна бути заповненою",
+                "integer": "Тема урока не повинна перевищувати :max символів"
+              }
+            },
+            "errors": [],
+            "value": ""
+          },
+          "LessonPlan.description": {
+            "name": "Опис",
+            "code": "LessonPlan.description",
+            "type_element": "textarea",
+            "type_data": "text",
+            "errors": [],
+            "value": ""
+          },
+          "LessonPlan.homework": {
+            "name": "Домашнє завдання",
+            "code": "LessonPlan.homework",
+            "type_element": "textarea",
+            "type_data": "text",
+            "errors": [],
+            "value": ""
+          },
+          "LessonPlan.work_time": {
+            "name": "Час на ДЗ",
+            "code": "LessonPlan.work_time",
+            "type_element": "input",
+            "validation":{
+              "rules": "string|max:32",
+              "messages": {
+                "max": "Час на ДЗ не повинен превищувати :max символів"
+              }
+            },
+            "errors": [],
+            "value": ""
+          }
+        },
+        "relations": []
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "exceptions": {
+    "delete-foreign-keys": [
+      "<br> - придметне навантаження"
+    ]
+  },
+  "_link": ""
+}

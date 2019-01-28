@@ -1,0 +1,104 @@
+{
+  "code": "Departments",
+  "access": ["manager"],
+  "list": {
+    "metadata": {
+      "title": "Перелік кафедр",
+      "description": "Список всіх кафедр школи",
+      "class_name": "departments-list"
+    },
+    "sort": {
+      "field": "Department.name",
+      "order": "asc"
+    },
+    "pagination": {
+      "per_page": 20
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "Department.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Назва",
+        "code": "Department.name",
+        "sortable": true
+      },
+      {
+        "name": "Сортування",
+        "code": "Department.sort",
+        "sortable": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування кафедри"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "Department.id",
+          "Department.name",
+          "Department.sort"
+        ],
+        "groups": [],
+        "fields": {
+          "Department.id": {
+            "name": "Ід",
+            "primary_key": true,
+            "code": "Department.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "Department.name": {
+            "name": "Назва",
+            "code": "Department.name",
+            "type_element": "input",
+            "type_data": "text",
+            "required": true,
+            "validation": {
+              "rules": "required|max:250",
+              "messages": {
+                "required": "Поле з назваю кафедри",
+                "max": "Назва кафедри не повинна перевищувати :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "Department.sort": {
+            "name": "Сортування",
+            "code": "Department.sort",
+            "type_element": "input",
+            "value": "10"
+          }
+        },
+        "relations": []
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "exceptions": {
+    "delete-foreign-keys": [
+      "<br> - профіль вчителя"
+    ]
+  },
+  "_link": ""
+}

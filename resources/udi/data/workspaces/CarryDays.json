@@ -1,0 +1,134 @@
+{
+  "code": "CarryDays",
+  "access": ["manager"],
+  "list": {
+    "metadata": {
+      "title": "Список переносів",
+      "description": "Список всіх переносів",
+      "class_name": "subjects-list"
+    },
+    "sort": {
+      "field": "CarryDay.old_date",
+      "order": "desc"
+    },
+    "pagination": {
+      "per_page": 20
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "CarryDay.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Дата выходного",
+        "code": "CarryDay.old_date",
+        "sortable": true
+      },
+      {
+        "name": "Дата переноса",
+        "code": "CarryDay.new_date",
+        "sortable": true
+      },
+      {
+        "name": "Рік",
+        "code": "CarryDay.Year:year_id.name",
+        "sortable": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування переносів"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "CarryDay.id",
+          "CarryDay.old_date",
+          "CarryDay.new_date",
+          "CarryDay.year_id"
+        ],
+        "groups": [],
+        "fields": {
+          "CarryDay.id": {
+            "name": "Ід",
+            "primary_key": true,
+            "code": "CarryDay.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "CarryDay.old_date": {
+            "name": "Дата выходного",
+            "code": "CarryDay.old_date",
+            "type_element": "input",
+            "type_data": "date",
+            "required": true,
+            "validation": {
+              "rules": "required|date",
+              "messages": {
+                "required": "Вкажіть дату вихідного дня",
+                "date": "Неправильный формат дати. Правильний формат: dd/MM/YY"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "CarryDay.new_date": {
+            "name": "Дата переноса",
+            "code": "CarryDay.new_date",
+            "type_element": "input",
+            "type_data": "date",
+            "required": true,
+            "validation": {
+              "rules": "required|date",
+              "messages": {
+                "required": "Вкажіть дату переноса",
+                "date": "Неправильный формат дати. Правильний формат: dd/MM/YY"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "CarryDay.year_id": {
+            "name": "Рік",
+            "code": "CarryDay.year_id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "Year.id",
+              "label": "Year.name"
+            },
+            "select_values": [],
+            "required": true,
+            "validation": {
+              "rules": "required",
+              "messages": {
+                "required": "Рік має бути визначеним"
+              }
+            },
+            "value": "",
+            "errors": []
+          }
+        },
+        "relations": []
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "_link": ""
+}

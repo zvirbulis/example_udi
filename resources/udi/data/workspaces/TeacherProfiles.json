@@ -1,0 +1,197 @@
+{
+  "code": "TeacherProfiles",
+  "access": ["manager"],
+  "list": {
+    "metadata": {
+      "title": "Профіль викладача",
+      "description": "Інформація про вчителя",
+      "class_name": "subjects-list"
+    },
+    "sort": {
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "TeacherProfile.user_id",
+        "primary_key": true,
+        "sortable": true,
+        "default_hidden": true
+      },
+      {
+        "name": "Профіль",
+        "code": "TeacherProfile.User.name"
+      },
+      {
+        "name": "Кафедра",
+        "code": "TeacherProfile.Department:department_id.name"
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування профилю користувача"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "TeacherProfile.user_id",
+          "TeacherProfile.department_id",
+          "TeacherProfile.additional_phones",
+          "TeacherProfile.additional_emails",
+          "TeacherProfile.education_info",
+          "TeacherProfile.experience_info",
+          "TeacherProfile.qualification_category",
+          "TeacherProfile.tariff_rank",
+          "TeacherProfile.retraining_date",
+          "TeacherProfile.language_levels",
+          "TeacherProfile.other_info"
+
+        ],
+        "groups": [],
+        "fields": {
+          "TeacherProfile.user_id": {
+            "name": "ІД користувача",
+            "code": "TeacherProfile.user_id",
+            "type_element": "hidden",
+            "primary_key": true,
+            "value": ""
+          },
+          "TeacherProfile.additional_phones": {
+            "name": "Додаткові номери телефонів",
+            "code": "TeacherProfile.additional_phones",
+            "type_element": "textarea",
+            "validation": {
+              "rules": "max:255",
+              "messages": {
+                "max": "Значення поля не повинно перевищувати :max символів"
+              }
+            },
+            "value": ""
+          },
+          "TeacherProfile.additional_emails": {
+            "name": "Додавткові E-mail",
+            "code": "TeacherProfile.additional_emails",
+            "type_element": "textarea",
+            "validation": {
+              "rules": "max:255",
+              "messages": {
+                "max": "Значення поля не повинно перевищувати :max символів"
+              }
+            },
+            "value": ""
+          },
+          "TeacherProfile.education_info": {
+            "name": "Освіта",
+            "code": "TeacherProfile.education_info",
+            "type_element": "textarea",
+            "validation": {
+              "rules": "max:1024",
+              "messages": {
+                "max": "Значення поля не повинно перевищувати :max символів"
+              }
+            },
+            "value": ""
+          },
+          "TeacherProfile.experience_info": {
+            "name": "Досвід работи",
+            "code": "TeacherProfile.experience_info",
+            "type_element": "textarea",
+            "value": ""
+          },
+          "TeacherProfile.qualification_category": {
+            "name": "Кваліфікація (категорія)",
+            "code": "TeacherProfile.qualification_category",
+            "type_element": "textarea",
+            "validation": {
+              "rules": "max:255",
+              "messages": {
+                "max": "Значення поля не повинно перевищувать :max символів"
+              }
+            },
+            "value": ""
+          },
+          "TeacherProfile.tariff_rank": {
+            "name": "Рейтинг",
+            "code": "TeacherProfile.tariff_rank",
+            "type_element": "textarea",
+            "validation": {
+              "rules": "max:255",
+              "messages": {
+                "max": "Значення поля не повинно перевищувать :max символів"
+              }
+            },
+            "value": ""
+          },
+          "TeacherProfile.retraining_date": {
+            "name": "Дата підвищення кваліфікації",
+            "code": "TeacherProfile.retraining_date",
+            "type_element": "input",
+            "type_data": "date",
+            "validation": {
+              "rules": "date",
+              "messages": {
+                "date": "Неправильний формат дати. Правильний формат: dd/MM/YY"
+              }
+            },
+            "value": ""
+          },
+          "TeacherProfile.language_levels": {
+            "name": "Рівень іноземної мови",
+            "code": "TeacherProfile.language_levels",
+            "type_element": "textarea",
+            "validation": {
+              "rules": "max:255",
+              "messages": {
+                "max": "Значення поля не має перевищувати :max символів"
+              }
+            },
+            "value": ""
+          },
+          "TeacherProfile.other_info": {
+            "name": "Інша інформація",
+            "code": "TeacherProfile.other_info",
+            "type_element": "textarea",
+            "value": ""
+          },
+          "TeacherProfile.department_id": {
+            "name": "Кафедра",
+            "code": "TeacherProfile.department_id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "Department.id",
+              "label": "Department.name"
+            },
+            "select_values": [],
+            "required": true,
+            "validation": {
+              "rules": "required",
+              "messages": {
+                "required": "Оберіть кафедру до якої відноситься викладач"
+              }
+            },
+            "value": ""
+          }
+        }
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "exceptions": {
+    "create-duplicate-entry": "У вибраного користувача вже є профіль. Відредагуйте існуючий профіль або видаліть та створіть новий"
+  },
+  "_link": ""
+}

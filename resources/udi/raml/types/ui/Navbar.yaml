@@ -1,0 +1,8 @@
+type: object
+displayName: UI.Navbar
+description: Элемент пользовательского интерфейса, в котором описываются ссылки на ресурсы
+properties:
+  items:
+    type: UI.NavbarItem[]
+    description: Пункты навигационной панели
+example: !include /examples/types/Navbar.json

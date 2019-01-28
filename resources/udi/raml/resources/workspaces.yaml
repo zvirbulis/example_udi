@@ -1,0 +1,15 @@
+displayName: Workspaces
+get:
+  description: Возвращает список URL рабочих областей
+  is: [
+    response_ok: { responseData: UI.NavbarItem},
+    response_unauthorized, response_forbidden
+  ]
+/{workspace}:
+  get:
+    description: Возвращает схему данных для конкретного ресурса *workspace*
+    is: [
+      response_ok: {responseData: UI.Workspace},
+      response_unauthorized, response_forbidden, response_bad_request
+    ]
+/ClassRooms: !include /raml/resources/workspaces/ClassRooms.yaml

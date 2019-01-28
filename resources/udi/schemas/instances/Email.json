@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/instances/Email.json",
+  "type": "object",
+  "title": "Медіатип - Email",
+  "allOf": [
+    {"$ref": "/instances/MediaTypeValue.json"},
+    {
+      "properties": {
+        "email": {
+          "type": "string",
+          "title": "Email",
+          "maxLength": 128,
+          "example": "foo@bar.com"
+        }
+      }
+    }
+  ]
+}

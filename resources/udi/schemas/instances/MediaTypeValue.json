@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/instances/MediaTypeValue.json",
+  "type": "object",
+  "title": "Значення медіатипу",
+  "description": "Дані про значення медіатипів, таких як, наприклад: телефон, e-mail, мессенджер",
+  "properties": {
+    "id": {"$ref": "/fields/Id.json"},
+    "media_type_id": {
+      "type": "integer",
+      "title": "Ідентифікатор медіатипа",
+      "minimum": 1,
+      "example": 3
+    },
+    "media_type": {
+      "allOf": [
+        {"$ref": "/instances/MediaType.json"},
+        {"readonly": true}
+      ]
+    }
+  }
+}

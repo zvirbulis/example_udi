@@ -1,0 +1,128 @@
+{
+  "code": "ScheduleSlots",
+  "access": ["manager"],
+  "list": {
+    "metadata": {
+      "title": "Позиція в розкладі",
+      "class_name": "subjects-list"
+    },
+    "sort": {
+      "field": "ScheduleSlot.id",
+      "order": "asc"
+    },
+    "pagination": {
+      "per_page": 20
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "ScheduleSlot.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Назва",
+        "code": "ScheduleSlot.name",
+        "sortable": true
+      },
+      {
+        "name": "День",
+        "code": "ScheduleSlot.day",
+        "sortable": true
+      },
+      {
+        "name": "Номер урока",
+        "code": "ScheduleSlot.lesson_num",
+        "sortable": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування позицій в розкладі"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "ScheduleSlot.id",
+          "ScheduleSlot.day",
+          "ScheduleSlot.lesson_num"
+        ],
+        "groups": [],
+        "fields": {
+          "ScheduleSlot.id": {
+            "name": "Ід",
+            "primary_key": true,
+            "code": "ScheduleSlot.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "ScheduleSlot.day": {
+            "name": "День",
+            "code": "ScheduleSlot.day",
+            "description": "",
+            "type_element": "select",
+            "select_values": [
+              {"id": 1, "label": "Понеділок"},
+              {"id": 2, "label": "Вівторок"},
+              {"id": 3, "label": "Середа"},
+              {"id": 4, "label": "Четверг"},
+              {"id": 5, "label": "П'ятниця"},
+              {"id": 6, "label": "Субота"},
+              {"id": 7, "label": "Неділя"}
+            ],
+            "required": true,
+            "validation": {
+              "rules": "integer|max:5",
+              "messages": {
+                "integer": "Введіть номер дня тижня",
+                "required":  "День проведення має бути визначеним",
+                "max": "День не повинен перевищувати :max символи"
+              }
+            },
+            "errors": [],
+            "value": "1"
+          },
+          "ScheduleSlot.lesson_num": {
+            "name": "Номер урока",
+            "code": "ScheduleSlot.lesson_num",
+            "type_element": "input",
+            "required": true,
+            "validation": {
+              "rules": "required|unique|integer",
+              "messages": {
+                "required":  "Номер урока має бути визначеним",
+                "unique": "Така позиція вже є у розкладі",
+                "integer": "Номер позиції має бути цілим числом"
+              }
+            },
+            "value": "",
+            "errors": []
+          }
+        }
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "exceptions": {
+    "delete-foreign-keys": [
+      "<br> - активності на уроці",
+      "<br> - картки уроків"
+    ]
+  },
+  "_link": ""
+}

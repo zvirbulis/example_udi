@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/instances/Phone.json",
+  "type": "object",
+  "title": "Медіатип - Телефон",
+  "allOf": [
+    {"$ref": "/instances/MediaTypeValue.json"},
+    {
+      "properties": {
+        "phone": {
+          "type": "string",
+          "title": "Телефон",
+          "maxLength": 64,
+          "example": "555-55-55"
+        }
+      }
+    }
+  ]
+}

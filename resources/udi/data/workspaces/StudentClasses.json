@@ -1,0 +1,331 @@
+{
+  "code": "StudentClasses",
+  "access": ["manager"],
+  "list": {
+    "metadata": {
+      "title": "Список класів",
+      "class_name": "hb-student-classes-list"
+    },
+    "categories": {
+      "levels": [
+        "Year.name"
+      ],
+      "items": []
+    },
+    "sort": {
+      "field": "StudentClass.name",
+      "order": "desc"
+    },
+    "pagination": {
+      "per_page": 20
+    },
+    "filter":{
+      "order": [
+        "StudentClass.student_class_num",
+        "StudentClass.year_id"
+      ],
+      "fields":{
+        "StudentClass.year_id": {
+          "one_row": false,
+          "class_name": ""
+        },
+        "StudentClass.student_class_num": {
+          "type_input": "number"
+        }
+      }
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "StudentClass.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Назва",
+        "code": "StudentClass.name",
+        "sortable": true
+      },
+      {
+        "name": "Номер потоку",
+        "code": "StudentClass.student_class_num",
+        "sortable": true
+      },
+      {
+        "name": "Навчальний рік",
+        "code": "StudentClass.Year.name",
+        "sortable": true
+      },
+      {
+        "name": "Аудитория",
+        "code": "StudentClass.ClassRoom.name",
+        "sortable": true
+      },
+      {
+        "name": "Сортування",
+        "code": "StudentClass.sort",
+        "sortable": true
+      },
+      {
+        "name": "Створено",
+        "code": "StudentClass.created_at",
+        "sortable": true
+      },
+      {
+        "name": "Оновлено",
+        "code": "StudentClass.updated_at",
+        "sortable": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування класу",
+        "class_name": "hb-studentclass-edit-form"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "StudentClass.id",
+          "StudentClass.name",
+          "StudentClass.student_class_num",
+          "StudentClass.sort",
+          "StudentClass.year_id",
+          "StudentClass.study_plan_id",
+          "StudentClass.curator_id",
+          "StudentClass.class_room_id",
+          "StudentClass.lesson_num_schema_id",
+          "StudentClass.created_at",
+          "StudentClass.updated_at"
+        ],
+        "groups": [
+          {
+            "class_name": "main-panel",
+            "order": [
+              "StudentClass.name",
+              "StudentClass.student_class_num"
+            ],
+            "one_row": true
+          },
+          {
+            "class_name": "select-study-plan-panel",
+            "order": [
+              "StudentClass.year_id",
+              "StudentClass.sort",
+              "StudentClass.study_plan_id",
+              "StudentClass.curator_id",
+              "StudentClass.class_room_id",
+              "StudentClass.lesson_num_schema_id"
+            ]
+          }
+        ],
+        "fields": {
+          "StudentClass.id": {
+            "name": "Ід",
+            "primary_key": true,
+            "code": "StudentClass.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "StudentClass.name": {
+            "name": "Назва",
+            "code": "StudentClass.name",
+            "class_name": "hb-form-student-class-name",
+            "type_element": "input",
+            "type_data": "text",
+            "required": true,
+            "validation": {
+              "rules": "required|max:8",
+              "messages": {
+                "required": "Назва класу повинна бути заповненою",
+                "max": "Назва класу не повинна перевищувати :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "StudentClass.student_class_num": {
+            "name": "Номер потоку",
+            "code": "StudentClass.student_class_num",
+            "class_name": "hb-form-student-class-num",
+            "description": "Номер потоку це числове значення",
+            "type_element": "input",
+            "type_data": "text",
+            "required": true,
+            "validation": {
+              "rules": "required|integer",
+              "messages": {
+                "required": "Номер потоку повинен бути заповненим",
+                "integer": "Номер потоку повинен бути числовим значенням"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "StudentClass.year_id": {
+            "name": "Навчальний рік",
+            "code": "StudentClass.year_id",
+            "one_row": true,
+            "label_cols": 5,
+            "class_name": "hb-form-student-class-year-id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "Year.id",
+              "label": "Year.name",
+              "autoload": ""
+            },
+            "select_values": [
+            ],
+            "required": true,
+            "validation": {
+              "rules": "required",
+              "messages": {
+                "required": "Навчальний рік повинен бути заповненим"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "StudentClass.sort": {
+            "name": "Сортування",
+            "code": "StudentClass.sort",
+            "class_name": "hb-form-student-class-study-plan-id",
+            "type_element": "input",
+            "one_row": true,
+            "value": "10"
+          },
+          "StudentClass.study_plan_id": {
+            "name": "Навчальний план",
+            "code": "StudentClass.study_plan_id",
+            "class_name": "hb-form-student-class-study-plan-id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "StudyPlan.id",
+              "label": "StudyPlan.name",
+              "autoload": ""
+            },
+            "select_values": [
+            ],
+            "value": "",
+            "errors": []
+          },
+          "StudentClass.curator_id": {
+            "name": "Куратор",
+            "code": "StudentClass.curator_id",
+            "one_row": true,
+            "label_cols": 5,
+            "class_name": "hb-form-student-class-curator-id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "User.id",
+              "label": "User.name",
+              "autoload": ""
+            },
+            "select_values": [
+            ],
+            "value": "",
+            "errors": []
+          },
+          "StudentClass.class_room_id": {
+            "name": "Аудитория",
+            "code": "StudentClass.class_room_id",
+            "one_row": true,
+            "label_cols": 5,
+            "class_name": "hb-form-student-class-classroom-id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "ClassRoom.id",
+              "label": "ClassRoom.name",
+              "autoload": ""
+            },
+            "select_values": [
+            ],
+            "value": "",
+            "errors": []
+          },
+          "StudentClass.lesson_num_schema_id": {
+            "name": "Схема дзвінків",
+            "code": "StudentClass.lesson_num_schema_id",
+            "one_row": true,
+            "label_cols": 5,
+            "class_name": "hb-form-student-class-lesson-num-schema-id",
+            "type_element": "select",
+            "required": true,
+            "select_settings": {
+              "id": "LessonNumSchema.id",
+              "label": "LessonNumSchema.name",
+              "autoload": ""
+            },
+            "select_values": [
+            ],
+            "validation": {
+              "rules": "required",
+              "messages": {
+                "required": "Схема дзвінків повинна бути заповненою"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "StudentClass.created_at": {
+            "name": "Створено",
+            "code": "StudentClass.created_at",
+            "type_element": "hidden",
+            "value": "",
+            "errors": []
+          },
+          "StudentClass.updated_at": {
+            "name": "Оновлено",
+            "code": "StudentClass.updated_at",
+            "type_element": "hidden",
+            "value": "",
+            "errors": []
+          }
+        },
+        "relations": [
+          {
+            "code": "StudentClassStudents",
+            "name": "Учні",
+            "_link": ""
+          },
+          {
+            "code": "LessonCards",
+            "name": "Картки уроків",
+            "access": [],
+            "_link": "",
+            "disable": true
+          },
+          {
+            "code": "BreakActivities",
+            "name": "Активності на перерві",
+            "_link": ""
+          }
+        ]
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "exceptions": {
+    "delete-foreign-keys": [
+      "<br> - учні",
+      "<br> - картки уроків ",
+      "<br> - активності на перерві",
+      "<br> - список аудиторій"
+    ]
+  },
+  "_link": ""
+}

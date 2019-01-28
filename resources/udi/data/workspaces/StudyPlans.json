@@ -1,0 +1,157 @@
+{
+  "code": "StudyPlan",
+  "access": ["head_teacher", "teacher", "manager"],
+  "list": {
+    "metadata": {
+      "title": "Навчальний план",
+      "description": "Вся інформація стосовно навчального плану ті її редагування.",
+      "class_name": "subjects-list"
+    },
+    "categories": {
+      "levels": [
+        "Year.name"
+      ],
+      "items": []
+    },
+    "filter":{
+      "order": [
+        "StudyPlan.year_id"
+      ],
+      "fields":{
+        "StudyPlan.year_id": {
+          "one_row": false,
+          "class_name": ""
+        }
+      }
+    },
+    "sort": {
+      "field": "StudyPlan.id",
+      "order": "desc"
+    },
+    "pagination": {
+      "per_page": 20
+    },
+    "fields": [
+      {
+        "name": "ІД",
+        "code": "StudyPlan.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Назва",
+        "code": "StudyPlan.name",
+        "sortable": true
+      },
+      {
+        "name": "Навчальний рік",
+        "code": "StudyPlan.Year.name",
+        "sortable": true
+      },
+      {
+        "name": "Створений",
+        "code": "StudyPlan.created_at",
+        "sortable": true
+      },
+      {
+        "name": "Оновлений",
+        "code": "StudyPlan.updated_at",
+        "sortable": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування навчального плану"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "perfect_copy",
+            "type": "custom"
+          },
+          {
+          "name": "<span style='color: red'>Видалити</span>",
+          "code": "delete_item",
+          "type": "frontend",
+          "need_confirm": true,
+          "expected_answer_confirm": "так",
+          "question_confirm": "Для видалення введіть 'так'",
+          "message_confirm": "Бажаєте видалити навчальний план, а також всі зв'язані з ним сутності?",
+          "close_confirm": true
+          }
+        ],
+        "order": [
+          "StudyPlan.id",
+          "StudyPlan.name",
+          "StudyPlan.year_id"
+        ],
+        "groups": [],
+        "fields": {
+          "StudyPlan.id": {
+            "name": "Ід",
+            "primary_key": true,
+            "code": "StudyPlan.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "StudyPlan.name": {
+            "name": "Назва",
+            "code": "StudyPlan.name",
+            "type_element": "input",
+            "type_data": "text",
+            "required": true,
+            "validation": {
+              "rules": "required|max:255",
+              "messages": {
+                "required": "Назва навчального плану повинна бути заповненою",
+                "max": "Назва навчального плану не повинна перевищувати :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "StudyPlan.year_id": {
+            "name": "Навчальний рік",
+            "code": "StudyPlan.year_id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "Year.id",
+              "label": "Year.name",
+              "autoload": ""
+            },
+            "required": true,
+            "validation": {
+              "rules": "required",
+              "messages": {
+                "required": "Необхідно вибрати навчальний рік"
+              }
+            },
+            "select_values": {},
+            "value": "",
+            "errors": []
+          }
+        },
+        "relations": [
+          {
+            "code": "SubjectLoads",
+            "name": "Предметне навантаження",
+            "_link": ""
+          }
+        ]
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "exceptions": {
+    "delete-foreign-keys": [
+      "<br> - класи",
+      "<br> - навантаження"
+    ]
+  },
+  "_link": ""
+}

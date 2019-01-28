@@ -1,0 +1,6 @@
+type: object
+displayName: UI.Form
+description: Форма ввода/вывода и редактирования данных
+properties:
+  grid:
+    type: UI.FormGrid

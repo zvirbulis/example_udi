@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/Response.json",
+  "type": "object",
+  "title": "Response schema",
+  "description": "Стандартна відповідь від сервера",
+  "properties": {
+    "code": {
+      "id": "code",
+      "type": "number",
+      "title": "HTTP код відповіді сервера",
+      "example": 200
+    },
+    "status": {
+      "id": "status",
+      "type": "string",
+      "title": "Статус відповіді сервера. Може приймати значення 'success'(все ок), 'error'(помилка застосунку), 'fail'(помилка сервера)",
+      "enum": ["success", "error", "fail"]
+    },
+    "message": {
+      "id": "message",
+      "type": "string",
+      "title": "Повідомлення помилки. Використовується тільки якщо status рівний 'fail' або 'error'",
+      "example": "Fail connect to DB"
+    },
+    "data": {
+      "id": "data",
+      "type": ["array", "null", "number", "object", "string", "boolean", "integer"]
+    }
+  }
+}

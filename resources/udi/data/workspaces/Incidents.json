@@ -1,0 +1,221 @@
+{
+  "code": "Incidents",
+  "access": ["medic", "manager", "curator"],
+  "list": {
+    "metadata": {
+      "title": "Список інцидентів",
+      "description": "Список інцидентів.",
+      "class_name": "incidents-list"
+    },
+    "sort": {
+      "field": "Incident.date",
+      "order": "desc"
+    },
+    "pagination": {
+      "per_page": 20
+    },
+    "filter": {
+      "order": [
+        "Incident.user_id",
+        "Incident.incident_type_id"
+      ],
+      "fields": {
+        "Incident.user_id": {
+          "code": "Incident.user_id"
+        },
+        "Incident.incident_type_id": {
+          "code": "Incident.incident_type_id"
+        }
+      }
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "Incident.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Учень",
+        "code": "Incident.User:user_id.name",
+        "sortable": true
+      },
+      {
+        "name": "Дата та час",
+        "code": "Incident.date",
+        "sortable": true
+      },
+      {
+        "name": "Тип інциденту",
+        "code": "Incident.IncidentType:incident_type_id.name",
+        "sortable": true
+      },
+      {
+        "name": "Що сталось",
+        "code": "Incident.description",
+        "sortable": true
+      },
+      {
+        "name": "Виконані призначення",
+        "code": "Incident.result",
+        "sortable": true
+      },
+      {
+        "name": "Переглянуто",
+        "code": "Incident.viewed",
+        "sortable": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування інциденту",
+        "class_name": "incidents_edit_form"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "Incident.id",
+          "Incident.user_id",
+          "Incident.created_by",
+          "Incident.incident_type_id",
+          "Incident.date",
+          "Incident.description",
+          "Incident.result",
+          "Incident.viewed"
+        ],
+        "groups": [],
+        "fields": {
+          "Incident.id": {
+            "name": "Ид",
+            "primary_key": true,
+            "code": "Incident.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "Incident.created_by": {
+            "name": "Автор інциденту",
+            "code": "Incident.created_by",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "Incident.user_id": {
+            "name": "Учень",
+            "code": "Incident.user_id",
+            "description": " Учень якого стосується інцидет",
+            "type_element": "select",
+            "select_settings": {
+              "id": "User.id",
+              "label": "User.name",
+              "url": "/udi/workspaces/Users/$id",
+              "filter": "User.group_id::2",
+              "autocomplete": {
+                "limit": 10,
+                "_link": ""
+              }
+            },
+            "required": true,
+            "validation": {
+              "rules": "required",
+              "messages": {
+                "required": "Учень якого стосуєтья інцидент повинен бути вказаним"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "Incident.incident_type_id": {
+            "name": "Тип інциденту",
+            "description": "Вкажіть до якого типу відноситься інцидент",
+            "code": "Incident.incident_type_id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "IncidentType.id",
+              "label": "IncidentType.name"
+            },
+            "required": true,
+            "validation": {
+              "rules": "required",
+              "messages": {
+                "required": "Тип інциденту повинен бути вказаним"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "Incident.date": {
+            "name": "Дата та час",
+            "code": "Incident.date",
+            "description": "Якщо лишити дату або час незаповненими, то виставляється автоматично.",
+            "type_element": "input",
+            "type_data": "datetime-local",
+            "validation": {
+              "rules": "date",
+              "messages": {
+                "date": "Дата вказується в форматі '31.01.2001 13:00:00' "
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "Incident.description": {
+            "name": "Що сталось",
+            "code": "Incident.description",
+            "description": "Детальний опис інциденту.",
+            "value": "",
+            "type_element": "textarea",
+            "required": true,
+            "validation": {
+              "rules": "required|max:5000",
+              "messages": {
+                "required": "Опис повинен бути заповненим",
+                "max": "Максимальна довжина :max символів"
+              }
+            },
+            "errors": []
+          },
+          "Incident.result": {
+            "name": "Виконані призначення",
+            "code": "Incident.result",
+            "description": "Вжиті заходи та наслідки інциденту",
+            "value": "",
+            "type_element": "textarea",
+            "required": true,
+            "validation": {
+              "rules": "required|max:5000",
+              "messages": {
+                "required": "Результат повинен бути заповненим",
+                "max": "Максимальна довжина :max символів"
+              }
+            },
+            "errors": []
+          },
+          "Incident.viewed": {
+            "name": "Переглянуто",
+            "code": "Incident.viewed",
+            "value": "",
+            "type_element": "textarea",
+            "readonly": true,
+            "errors": []
+          }
+        }
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "_link": ""
+}

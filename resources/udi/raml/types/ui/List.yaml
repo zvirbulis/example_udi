@@ -1,0 +1,10 @@
+type: object
+displayName: UI.List
+description: Список элементов для отображения в таблице
+properties:
+  fields:
+    type: UI.ListField[]
+    description: Заголовочные поля списка
+  items:
+    type: UI.ListItem[]
+    description: Элементы списка

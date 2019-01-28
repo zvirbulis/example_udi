@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/collections/Users.json",
+  "type": "object",
+  "title": "Список користувачів",
+  "description": "Список користувачів зараєстрованих в системі. Містить список і дані для посторінкової навігації.",
+  "properties": {
+    "users": {
+      "type": "array",
+      "title": "Користувачі",
+      "description": "Масиів об'єктів, кожен елемент якого містить дані про користувача",
+      "items": {"$ref": "/instances/User.json"}
+    },
+    "pagination": {"$ref": "/Pagination.json"}
+  }
+}

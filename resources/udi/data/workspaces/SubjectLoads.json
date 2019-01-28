@@ -1,0 +1,138 @@
+{
+  "code": "SubjectsLoads",
+  "access": ["head_teacher", "manager", "teacher"],
+  "list": {
+    "metadata": {
+      "title": "Предметне навантаження",
+      "description": "Перегляд інформації стосовно навантаження по кожному предмету",
+      "class_name": "subjects-list"
+    },
+    "sort": {
+      "field": "SubjectLoad.sort",
+      "order": "asc"
+    },
+    "pagination": {
+      "per_page": 20
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "SubjectLoad.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Назва",
+        "code": "SubjectLoad.Subject.name",
+        "sortable": true
+      },
+      {
+        "name": "Навантаження, рік",
+        "code": "SubjectLoad.load",
+        "sortable": true
+      },
+      {
+        "name": "Сортування",
+        "code": "SubjectLoad.sort",
+        "sortable": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування предметного навантаження"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "SubjectLoad.id",
+          "SubjectLoad.subject_id",
+          "SubjectLoad.load",
+          "SubjectLoad.sort"
+        ],
+        "groups": [],
+        "fields": {
+          "SubjectLoad.id": {
+            "name": "Ід",
+            "primary_key": true,
+            "code": "SubjectLoad.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "SubjectLoad.subject_id": {
+            "name": "Предмет",
+            "code": "SubjectLoad.subject_id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "Subject.id",
+              "label": "Subject.name"
+            },
+            "select_values": {},
+            "required": true,
+            "validation": {
+              "rules": "required",
+              "messages": {
+                "required": "Необхідно вибрати предмет"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "SubjectLoad.load": {
+            "name": "Навантаження",
+            "code": "SubjectLoad.load",
+            "type_element": "input",
+            "required": true,
+            "validation": {
+              "rules": "required|numeric",
+              "messages": {
+                "required": "Вкажіть предметне навантаження",
+                "numeric": "Предметне навантаження має бути числом"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "SubjectLoad.sort": {
+            "name": "Сортувальне число",
+            "code": "SubjectLoad.sort",
+            "type_element": "input",
+            "required": true,
+            "validation": {
+              "rules": "required|integer",
+              "messages": {
+                "required": "Вкажіть сортувальне число",
+                "numeric": "Сортувальне число має бути цілим числом"
+              }
+            },
+            "value": "10",
+            "errors": []
+          }
+        },
+        "relations": [
+          {
+            "code": "LessonPlans",
+            "name": "План вчителя",
+            "_link": ""
+          }
+        ]
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "_link": ""
+}

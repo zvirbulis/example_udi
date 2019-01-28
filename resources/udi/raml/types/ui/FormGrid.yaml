@@ -1,0 +1,12 @@
+type: object
+displayName: UI.FormGrid
+description: Объект-разметка для формы. Определяет какие поля как расположены в форме
+properties:
+  order:
+    type: array
+    description: Массив с кодами полей, определяющий их порядок в форме
+    uniqueItems: true
+  fields:
+    type: UI.FormField[]
+    description: Map-объект, в котором ключем являетяся код поля, а значением объект UI.FormField
+

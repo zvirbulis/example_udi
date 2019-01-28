@@ -1,0 +1,166 @@
+{
+  "id": "http://some.site.somewhere/entry-schema#",
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "object",
+  "properties": {
+    "list": {
+      "type": "object",
+      "properties": {
+        "fields": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "name": {"type": "string", "enum": ["Ид"]},
+                "code": {"type": "string", "enum": ["ClassRoom.id"]},
+                "sortable": {"type": "boolean", "enum": [true]}
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "name": {"type": "string", "enum": ["Название"]},
+                "code": {"type": "string", "enum": ["ClassRoom.name"]},
+                "sortable": {"enum": [true]}
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "name": {"type": "string", "enum": ["Описание"]},
+                "code": {"type": "string", "enum": ["ClassRoom.description"]},
+                "sortable": {"type": "boolean", "enum": [false]}
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "name": {"type": "string", "enum": ["Создан"]},
+                "code": {"type": "string", "enum": ["ClassRoom.created_at"]},
+                "sortable": {"type": "boolean", "enum": [false]}
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "name": {"type": "string", "enum": ["Обновлен"]},
+                "code": {"type": "string", "enum": ["ClassRoom.updated_at"]},
+                "sortable": {"type": "boolean", "enum": [false]}
+              }
+            }
+          ]
+        }
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ClassRoom.id": {
+            "type": "number"
+          },
+          "ClassRoom.name": {
+            "type": "string"
+          },
+          "ClassRoom.description": {
+            "type": "string"
+          },
+          "ClassRoom.created_at": {
+            "type": "number"
+          },
+          "ClassRoom.updated_at": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  },
+  "forms": {
+    "type": "object",
+    "properties": {
+      "self": {
+        "type": "object",
+        "properties": {
+          "grid": {
+            "type": "object",
+            "properties": {
+              "order": {
+                "type": "array",
+                "items": [
+                  {"type": "string", "enum": ["ClassRoom.id"]},
+                  {"type": "string", "enum": ["ClassRoom.name"]},
+                  {"type": "string", "enum": ["ClassRoom.description"]},
+                  {"type": "string", "enum": ["ClassRoom.updated_at"]},
+                  {"type": "string", "enum": ["ClassRoom.created_at"]}
+                ]
+              },
+              "fields": {
+                "type": "object",
+                "properties": {
+                  "ClassRoom.id": {
+                    "name": {"type": "string", "enum": ["Ид"]},
+                    "code": {"type": "string", "enum": ["ClassRoom.id"]},
+                    "type": {"type": "string", "enum": ["text"]},
+                    "flags": {"type": "array", "enum": ["readonly"]},
+                    "value": {
+                      "type": "number",
+                      "minimum": 1
+                    },
+                    "errors": {"type": "array", "items": "string"}
+                  },
+                  "ClassRoom.name": {
+                    "name": {"type": "string", "enum": ["Название"]},
+                    "code": {"type": "string", "enum": ["ClassRoom.name"]},
+                    "type": {"type": "string", "enum": ["text"]},
+                    "flags": {"type": "array", "enum": []},
+                    "value": {
+                      "type": "string",
+                      "maxLength": 64
+                    },
+                    "errors": {"type": "array", "items": "string"}
+                  },
+                  "ClassRoom.description": {
+                    "name": {"type": "string", "enum": ["Описание"]},
+                    "code": {"type": "string", "enum": ["ClassRoom.description"]},
+                    "type": {"type": "string", "enum": ["textarea"]},
+                    "flags": {"type": "array", "enum": []},
+                    "value": {
+                      "type": "string",
+                      "minLength": 255
+                    },
+                    "errors": {"type": "array", "items": "string"}
+                  },
+                  "ClassRoom.created_at": {
+                    "name": {"type": "string", "enum": ["Создан"]},
+                    "code": {"type": "string", "enum": ["ClassRoom.created_at"]},
+                    "type": {"type": "string", "enum": ["date"]},
+                    "flags": {"type": "array", "enum": ["readonly"]},
+                    "value": {
+                      "type": "number"
+                    },
+                    "errors": {"type": "array", "items": "string"}
+                  },
+                  "ClassRoom.updated_at": {
+                    "name": {"type": "string", "enum": ["Обновлен"]},
+                    "code": {"type": "string", "enum": ["ClassRoom.updated_at"]},
+                    "type": {"type": "string", "enum": ["date"]},
+                    "flags": {"type": "array", "enum": ["readonly"]},
+                    "value": {
+                      "type": "number"
+                    },
+                    "errors": {"type": "array", "items": "string"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "parent": {
+        "type": "object"
+      }
+    }
+  }
+}

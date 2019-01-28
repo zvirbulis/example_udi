@@ -1,0 +1,72 @@
+{
+  "code": "ClassRoomSubjects",
+  "access": ["manager"],
+  "list": {
+    "metadata": {
+      "title": "Список дисциплін для аудиторії",
+      "description": "Список дисциплін з можливістю їх редагування",
+      "class_name": "class-rooms-list"
+    },
+    "sort": {},
+    "pagination": {
+      "page": 1,
+      "per_page": 25
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "ClassRoomSubject.subject_id",
+        "primary_key": true,
+        "sortable": true
+      },
+      {
+        "name": "Назва",
+        "code": "ClassRoomSubject.Subject.name",
+        "sortable": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування дисциплін для аудиторії",
+        "class_name": "class-rooms-edit-form"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "ClassRoomSubject.subject_id"
+        ],
+        "groups": [],
+        "fields": {
+          "ClassRoomSubject.subject_id": {
+            "name": "Предмет",
+            "code": "ClassRoomSubject.subject_id",
+            "primary_key": true,
+            "type_element": "select",
+            "select_settings": {
+              "id": "Subject.id",
+              "label": "Subject.name"
+            },
+            "value": ""
+          }
+        }
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "_link": ""
+}

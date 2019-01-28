@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/collections/Files.json",
+  "type": "object",
+  "title": "Список файлів",
+  "description": "Список файлів загружених в систему. Містить список і дані для посторінкової навігації.",
+  "properties": {
+    "files": {
+      "type": "array",
+      "title": "Файли",
+      "description": "Масив об'єктів, кожний елемент якого містить дані про файл",
+      "$ref": "/instances/File.json"
+    },
+    "pagination": {"$ref": "/Pagination.json"}
+  }
+}

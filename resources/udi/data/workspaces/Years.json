@@ -1,0 +1,214 @@
+{
+  "code": "Years",
+  "access": ["manager"],
+  "list": {
+    "metadata": {
+      "title": "Список навчальних років",
+      "description": "Список навчальних років та інформація по кожному з них.",
+      "class_name": "subjects-list"
+    },
+    "sort": {
+      "field": "Year.id",
+      "order": "desc"
+    },
+    "pagination": {
+      "per_page": 20
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "Year.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Статус",
+        "code": "Year.status",
+        "sortable": true,
+        "format": "year_status"
+      },
+      {
+        "name": "Назва",
+        "code": "Year.name",
+        "sortable": false
+      },
+      {
+        "name": "Числовой код",
+        "code": "Year.code",
+        "sortable": true
+      },
+      {
+        "name": "Створено",
+        "code": "Year.created_at",
+        "sortable": true
+      },
+      {
+        "name": "Оновлено",
+        "code": "Year.updated_at",
+        "sortable": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування навчального року"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+		  {
+			"name": "Згенерувати уроки для розкладу",
+			"code": "generate_lessons",
+            "type": "custom",
+            "need_confirm": true,
+            "message_confirm": "Бажаєте згенерувати уроки для розкладу?"
+		  },
+		  {
+			"name": "<span style='color:red'>Видалити уроки</span>",
+			"code": "remove_lessons",
+            "type": "custom",
+            "need_confirm": true,
+            "expected_answer_confirm": "так",
+            "question_confirm": "Для видалення введіть 'так'",
+            "message_confirm": "Бажаєте видалити згенеровані уроки?",
+            "close_confirm": true
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "Year.id",
+          "Year.name",
+          "Year.status",
+          "Year.code",
+          "Year.created_at",
+          "Year.updated_at"
+        ],
+        "groups": [],
+        "fields": {
+          "Year.id": {
+            "name": "Ид",
+            "primary_key": true,
+            "code": "Year.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "Year.status": {
+            "name": "Статус",
+            "code": "Year.status",
+            "description": "",
+            "type_element": "select",
+            "required": true,
+            "validation": {
+              "rules": "required|in:active,develop,archive",
+              "messages": {
+                "required": "Поле зі статусом має бути заповнене",
+                "in": "Значеня статусу має бути серед значень [active, develop, archive]"
+              }
+            },
+            "select_values": [
+              {
+                "id": "active",
+                "label": "Поточний"
+              },
+              {
+                "id": "develop",
+                "label": "В розробці"
+              },
+              {
+                "id": "archive",
+                "label": "Aрхівний"
+              }
+            ],
+            "value": "active",
+            "errors": []
+          },
+          "Year.name": {
+            "name": "Назва",
+            "code": "Year.name",
+            "type_element": "input",
+            "type_data": "text",
+            "required": true,
+            "validation": {
+              "rules": "required|max:32",
+              "messages": {
+                "required": "Назва предмета повинна бути заповненою",
+                "max": "Назва предмета не повинна перевищувати :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "Year.code": {
+            "name": "Числовой код",
+            "code": "Year.code",
+            "description": "",
+            "type_element": "input",
+            "required": true,
+            "validation": {
+              "rules": "required|integer",
+              "messages": {
+                "required": "Числовой код повинен бути заповненим",
+                "integer": "Числовой код повинен бути цілим числом"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "Year.created_at": {
+            "name": "Створено",
+            "code": "Year.created_at",
+            "type_element": "hidden",
+            "value": "",
+            "errors": []
+          },
+          "Year.updated_at": {
+            "name": "Оновлено",
+            "code": "Year.updated_at",
+            "type_element": "hidden",
+            "value": "",
+            "errors": []
+          }
+        },
+        "relations": [
+          {
+            "code": "Holidays",
+            "name": "Свята та вихідні",
+            "_link": ""
+          },
+          {
+            "code": "CarryDays",
+            "name": "Переноси",
+            "_link": ""
+          },
+          {
+            "code": "YearIntervals",
+            "name": "Навчальні інтервали",
+            "_link": ""
+          }
+        ]
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "exceptions": {
+    "delete-foreign-keys": [
+      "<br> - список переносів",
+      "<br> - вихідні дні",
+      "<br> - класи",
+      "<br> - звіт про успішність",
+      "<br> - список навчальних інтервалів (семестрів)"
+    ]
+  },
+  "_link": ""
+}

@@ -1,0 +1,101 @@
+{
+  "code": "StudentClassStudents",
+  "access": ["manager"],
+  "list": {
+    "metadata": {
+      "title": "Список учнів",
+      "description": "Перегляд списку учнів та редагування їх груп",
+      "class_name": "class-rooms-list"
+    },
+    "sort": {},
+    "pagination": {
+      "page": 1,
+      "per_page": 25
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "StudyClass.id",
+        "primary_key": true,
+        "sortable": true,
+        "default_hidden": true
+      },
+      {
+        "name": "ПІП",
+        "code": "StudyClass.Student.name",
+        "sortable": true
+      },
+      {
+        "name": "Групи",
+        "code": "StudyClass.StudentGroupStudyClass.StudentGroup.name",
+        "sortable": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування учеів класу",
+        "class_name": "class-rooms-edit-form"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "StudyClass.id",
+          "StudyClass.student_id",
+          "StudyClass.StudentGroupStudyClass.student_group_id"
+        ],
+        "groups": [],
+        "fields": {
+          "StudyClass.id":{
+            "name": "Ід",
+            "code": "StudyClass.id",
+            "primary_key": true,
+            "type_element": "hidden"
+          },
+          "StudyClass.student_id": {
+            "name": "Учень",
+            "code": "StudyClass.student_id",
+            "description": "Унікальне значення",
+            "primary_key": true,
+            "type_element": "select",
+            "select_settings": {
+              "id": "Student.id",
+              "label": "Student.name"
+            },
+            "validation": {
+              "rules": "required|strict_unique:StudyClass.student_id,StudyClass.student_class_id=$parent_id",
+              "messages": {
+                "strict_unique": "Такий користувач вже входить у склад класу",
+                "required": "Необхідно вказати студента"
+              }
+            },
+            "value": ""
+          },
+          "StudyClass.StudentGroupStudyClass.student_group_id": {
+            "name": "Групи",
+            "code": "StudyClass.StudentGroupStudyClass.student_group_id",
+            "type_element": "select",
+            "multiple": true,
+            "select_settings": {
+              "id": "StudentGroup.id",
+              "label": "StudentGroup.name",
+              "sort": "StudentGroup.sort:asc"
+            },
+            "value": []
+          }
+        }
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "_link": ""
+}

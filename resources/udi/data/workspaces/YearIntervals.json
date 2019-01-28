@@ -1,0 +1,162 @@
+{
+  "code": "YearIntervals",
+  "access": ["manager"],
+  "list": {
+    "metadata": {
+      "title": "Список навчальних інтервалів",
+      "description": "Список навчальних інтервалів та інформація по кожному з них.",
+      "class_name": "subjects-list"
+    },
+    "sort": {
+      "field": "YearInterval.Year.name",
+      "order": "desc"
+    },
+    "pagination": {
+      "per_page": 20
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "YearInterval.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Учбовий рік",
+        "code": "YearInterval.Year.name",
+        "sortable": true
+      },
+      {
+        "name": "Назва",
+        "code": "YearInterval.name",
+        "sortable": false
+      },
+      {
+        "name": "Триває з",
+        "code": "YearInterval.date_from",
+        "sortable": false
+      },
+      {
+        "name": "Триває по",
+        "code": "YearInterval.date_to",
+        "sortable": false
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування навчального року"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "YearInterval.id",
+          "YearInterval.name",
+          "YearInterval.year_id",
+          "YearInterval.date_from",
+          "YearInterval.date_to"
+        ],
+        "groups": [],
+        "fields": {
+          "YearInterval.id": {
+            "name": "Ід",
+            "primary_key": true,
+            "code": "YearInterval.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "YearInterval.name": {
+            "name": "Назва",
+            "code": "YearInterval.name",
+            "type_element": "input",
+            "type_data": "text",
+            "required": true,
+            "validation": {
+              "rules": "required|max:32",
+              "messages": {
+                "required": "Поле з назвою учбового інтервалу має бути заповнено",
+                "max": "Назва учбового інтервалу не повинна перевищувати :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "YearInterval.year_id": {
+            "name": "Учбовий рік",
+            "code": "YearInterval.year_id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "Year.id",
+              "label": "Year.name"
+            },
+            "select_values": [],
+            "required": true,
+            "validation": {
+              "rules": "required",
+              "messages": {
+                "required": "Виберіть учбовий рік",
+                "max": "Значення поля має бути датою"
+              }
+            },
+            "value": []
+          },
+          "YearInterval.date_from": {
+            "name": "Початок",
+            "code": "YearInterval.date_from",
+            "description": "включно",
+            "type_element": "input",
+            "type_data": "date",
+            "required": true,
+            "validation": {
+              "rules": "required|date",
+              "messages": {
+                "required": "Поле з датою початку учбового інтервалу має бути заповнено",
+                "max": "Значення поля маэ бути датою"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "YearInterval.date_to": {
+            "name": "Кінець",
+            "code": "YearInterval.date_to",
+            "description": "включно",
+            "type_element": "input",
+            "type_data": "date",
+            "required": true,
+            "validation": {
+              "rules": "required|date",
+              "messages": {
+                "required": "Поле з датою кінця учбового інтервалу має бути заповнено",
+                "max": "Значення поля має бути датою"
+              }
+            },
+            "value": "",
+            "errors": []
+          }
+        }
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "exceptions": {
+    "delete-foreign-keys": [
+      "<br> - картки уроків"
+    ]
+  },
+  "_link": ""
+}

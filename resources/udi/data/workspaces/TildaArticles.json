@@ -1,0 +1,253 @@
+{
+  "code": "TildaArticles",
+  "access": ["manager"],
+  "list": {
+    "metadata": {
+      "title": "Список статей",
+      "description": "Списое статей",
+      "class_name": "tilda-articles-list"
+    },
+    "sort": {
+      "field": "TildaArticle.id",
+      "order": "desc"
+    },
+    "pagination": {
+      "per_page": 20
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "TildaArticle.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Назва",
+        "code": "TildaArticle.name",
+        "sortable": true
+      },
+      {
+        "name": "Код",
+        "code": "TildaArticle.code",
+        "sortable": true
+      },
+      {
+        "name": "Активність",
+        "code": "TildaArticle.active",
+        "sortable": true
+      },
+      {
+        "name": "Сортування",
+        "code": "TildaArticle.sort",
+        "sortable": true
+      },
+      {
+        "name": "Створено",
+        "code": "TildaArticle.created_at",
+        "sortable": true
+      },
+      {
+        "name": "Оновлено",
+        "code": "TildaArticle.updated_at",
+        "sortable": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування статей",
+        "class_name": "tildaarticles-edit-form"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "TildaArticle.id",
+          "TildaArticle.name",
+          "TildaArticle.code",
+          "TildaArticle.icon_id",
+          "TildaArticle.body",
+          "TildaArticle.assets",
+          "TildaArticle.active",
+          "TildaArticle.sort",
+          "TildaArticle.created_at",
+          "TildaArticle.updated_at"
+        ],
+        "groups": [
+          {
+            "class_name": "main-panel",
+            "order": [
+              "TildaArticle.name",
+              "TildaArticle.active",
+              "TildaArticle.sort",
+              "TildaArticle.code",
+              "TildaArticle.icon_id",
+              "TildaArticle.body",
+              "TildaArticle.assets"
+            ]
+          },
+          {
+            "class_name": "hidden-panel",
+            "order": [
+              "TildaArticle.id",
+              "TildaArticle.created_at",
+              "TildaArticle.updated_at"
+            ]
+          }
+        ],
+        "fields": {
+          "TildaArticle.id": {
+            "name": "Ід",
+            "primary_key": true,
+            "code": "TildaArticle.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "TildaArticle.name": {
+            "name": "Назва",
+            "code": "TildaArticle.name",
+            "class_name": "class-room-name",
+            "type_element": "textarea",
+            "required": true,
+            "validation": {
+              "rules": "required|max:255",
+              "messages": {
+                "required": "Назва повинна бути заповненою",
+                "max": "Назва не повинна перевищувати :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "TildaArticle.code": {
+            "name": "Код",
+            "code": "TildaArticle.code",
+            "class_name": "class-room-name",
+            "type_element": "input",
+            "type_data": "text",
+            "required": true,
+            "validation": {
+              "rules": "required|max:255",
+              "messages": {
+                "required": "Код повинен бути заповненим'",
+                "max": "Код не повинен перевищувати :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "TildaArticle.icon_id": {
+            "name": "Іконка меню",
+            "code": "TildaArticle.icon_id",
+            "class_name": "class-room-name",
+            "type_element": "file",
+            "description": "Розмір зображення до 300кб, а розширення до 15х15рх",
+            "file_settings": {
+              "id": "File.id",
+              "label": "File.original_name",
+              "src": "File.src",
+              "size": "File.size"
+            },
+            "uploader":{
+              "code": "kanschool",
+              "disk": "public",
+              "dir": "photos",
+              "subdir": false,
+              "validation": {
+                "rules": "nullable|file|max:300|mimes:jpeg,png,jpg|dimensions:max_width=15,max_height=15",
+                "messages": {
+                  "file" : "Поле з іконкою має містити файл-картинку",
+                  "max" : "Иконка не має перевищувати :max Кб",
+                  "mimes" : "Иконка має бути картинкою з розширенням: jpg, png, jpeg",
+                  "dimensions" : "Розміри иконки не мають перевищувати :max_widthx:max_heightpx"
+                }
+              }
+            },
+            "file_values": [],
+            "value": []
+          },
+          "TildaArticle.body": {
+            "name": "Текст",
+            "code": "TildaArticle.body",
+            "class_name": "class-room-name",
+            "type_element": "textarea",
+            "required": true,
+            "validation": {
+              "rules": "required",
+              "messages": {
+                "required": "Текст повинен бути заповненим"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "TildaArticle.assets": {
+            "name": "Ассет",
+            "code": "TildaArticle.assets",
+            "class_name": "class-room-name",
+            "type_element": "textarea",
+            "required": false,
+            "value": "",
+            "errors": []
+          },
+          "TildaArticle.active": {
+            "name": "Активніть",
+            "code": "TildaArticle.active",
+            "class_name": "class-room-name",
+            "type_element": "checkbox",
+            "required": false,
+            "value": "",
+            "errors": []
+          },
+          "TildaArticle.sort": {
+            "name": "Сортування",
+            "code": "TildaArticle.sort",
+            "description": "Дане поле визначає положення сторінки в головному меню",
+            "class_name": "class-room-name",
+            "type_element": "input",
+            "type_data": "text",
+            "required": true,
+            "validation": {
+              "rules": "required|numeric",
+              "messages": {
+                "required": "Сортування має бути заповненим",
+                "numeric": "Сортування має бути числом"
+              }
+            },
+            "value": "500",
+            "errors": []
+          },
+          "TildaArticle.created_at": {
+            "name": "Створено",
+            "code": "TildaArticle.created_at",
+            "type_element": "hidden",
+            "value": "",
+            "errors": []
+          },
+          "TildaArticle.updated_at": {
+            "name": "Оновлено",
+            "code": "TildaArticle.updated_at",
+            "type_element": "hidden",
+            "value": "",
+            "errors": []
+          }
+        }
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "_link": ""
+}

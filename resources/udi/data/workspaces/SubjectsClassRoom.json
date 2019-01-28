@@ -1,0 +1,72 @@
+{
+  "code": "SubjectsClassRoom",
+  "access": ["manager"],
+  "list": {
+    "metadata": {
+      "title": "Список аудиторій",
+      "description": "Наявні аудиторії та зміна їх характеристик",
+      "class_name": "class-rooms-list"
+    },
+    "sort": {},
+    "pagination": {
+      "page": 1,
+      "per_page": 25
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "ClassRoomSubject.class_room_id",
+        "primary_key": true,
+        "sortable": true
+      },
+      {
+        "name": "Назва",
+        "code": "ClassRoomSubject.ClassRoom.name",
+        "sortable": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування аудиторії",
+        "class_name": "class-rooms-edit-form"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "ClassRoomSubject.class_room_id"
+        ],
+        "groups": [],
+        "fields": {
+          "ClassRoomSubject.class_room_id": {
+            "name": "Аудиторії",
+            "code": "ClassRoomSubject.class_room_id",
+            "primary_key": true,
+            "type_element": "select",
+            "select_settings": {
+              "id": "ClassRoom.id",
+              "label": "ClassRoom.name"
+            },
+            "value": ""
+          }
+        }
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "_link": ""
+}

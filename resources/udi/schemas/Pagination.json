@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/Pagination.json",
+  "type": "object",
+  "title": "Pagination",
+  "description": "Властивості для механізму посторінкової навігації",
+  "properties": {
+    "offset": {
+      "type": "integer",
+      "title": "Початокве зміщення",
+      "description": "Початкове зміщення, що використовується для вибірки",
+      "example": "15"
+    },
+    "limit": {
+      "type": "integer",
+      "title": "К-ть елементів",
+      "description": "К-ть елементів в вибірці",
+      "example": "10"
+    },
+    "total": {
+      "type": "integer",
+      "title": "Загальна к-ть елементів",
+      "description": "Загальна к-ть елементів",
+      "example": "167"
+    }
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "code": "LessonCards",
+  "access": ["head_teacher", "manager"],
+  "list": {
+    "metadata": {
+      "title": "Карточка урока",
+      "class_name": "subjects-list"
+    },
+    "sort": {
+      "field": "LessonCard.id",
+      "order": "desc"
+    },
+    "pagination": {
+      "per_page": 10
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "LessonCard.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Позиція в розкладі",
+        "code": "LessonCard.ScheduleSlot.name",
+        "sortable": true
+      },
+      {
+        "name": "Предмет",
+        "code": "LessonCard.Subject.name",
+        "sortable": true
+      },
+      {
+        "name": "Вчитель",
+        "code": "LessonCard.User:teacher_id.name",
+        "sortable": true
+      },
+      {
+        "name": "Аудиторія",
+        "code": "LessonCard.ClassRoom.name",
+        "sortable": true
+      },
+      {
+        "name": "Група",
+        "code": "LessonCard.StudentGroup.name",
+        "sortable": true
+      },
+      {
+        "name": "Тиждень",
+        "code": "LessonCard.odd_even",
+        "sortable": true,
+        "format": "odd_even"
+      },
+      {
+        "name": "Семестр",
+        "code": "LessonCard.YearInterval.name",
+        "sortable": true,
+        "format": "year_interval"
+      },
+      {
+        "name": "Активність на уроці",
+        "code": "LessonCard.LessonActivity.name",
+        "sortable": false
+      },
+      {
+        "name": "Примітка",
+        "code": "LessonCard.notes",
+        "sortable": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування карточки урока"
+      },
+      "grid": {
+        "order": [
+          "LessonCard.id",
+          "LessonCard.schedule_slot_id",
+          "LessonCard.subject_id",
+          "LessonCard.teacher_id",
+          "LessonCard.class_room_id",
+          "LessonCard.student_group_id",
+          "LessonCard.odd_even",
+          "LessonCard.year_interval_id",
+          "LessonCard.lesson_activity_id",
+          "LessonCard.notes"
+        ],
+        "groups": [],
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Згенерувати уроки",
+            "code": "generate_lesson_card_lessons",
+            "type": "custom",
+            "need_confirm": true,
+            "message_confirm": "Бажаєте згенерувати уроки для карточки? Будуть згенеровані тільки уроки яких не вистачає згідно розкладу"
+          },
+          {
+            "name": "Знайти зайві уроки",
+            "code": "find_extra_lessons",
+            "type": "custom"
+          },
+          {
+            "name": "<span style='color:red'>Видалити зайві уроки</span>",
+            "code": "remove_extra_lessons",
+            "type": "custom",
+            "need_confirm": true,
+            "expected_answer_confirm": "так",
+            "question_confirm": "Для видалення введіть 'так'",
+            "message_confirm": "Бажаєте видалити всі зайві живі уроки для цієї картки?",
+            "close_confirm": true
+          },
+          {
+            "name": "<span style='color:red'>Видалити уроки</span>",
+            "code": "lesson_card_delete_lessons",
+            "type": "custom",
+            "need_confirm": true,
+            "expected_answer_confirm": "так",
+            "question_confirm": "Для видалення введіть 'так'",
+            "message_confirm": "Бажаєте видалити всі живі уроки для цієї картки?",
+            "close_confirm": true
+          }
+        ],
+        "fields": {
+          "LessonCard.id": {
+            "name": "Ід",
+            "primary_key": true,
+            "code": "LessonCard.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "LessonCard.odd_even": {
+            "name": "Парний/непарний тиждень",
+            "code": "LessonCard.odd_even",
+            "type_element": "select",
+            "select_values": [
+              {
+                "id": null,
+                "label": "завжди"
+              },
+              {
+                "id": 0,
+                "label": "непарний"
+              },
+              {
+                "id": 1,
+                "label": "парний"
+              }
+            ],
+            "required": false,
+            "value": null,
+            "errors": []
+          },
+          "LessonCard.year_interval_id": {
+            "name": "Семестр",
+            "code": "LessonCard.year_interval_id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "YearInterval.id",
+              "label": "YearInterval.name"
+            },
+            "select_values": [
+              {
+                "id": "",
+                "label": "Весь рік"
+              }
+            ],
+            "value": ""
+          },
+          "LessonCard.schedule_slot_id": {
+            "name": "Позиція в розкладі",
+            "code": "LessonCard.schedule_slot_id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "ScheduleSlot.id",
+              "label": "ScheduleSlot.name",
+              "sort": "ScheduleSlot.id:asc"
+            },
+            "select_values": [],
+            "required": false,
+            "value": ""
+          },
+          "LessonCard.subject_id": {
+            "name": "Предмет",
+            "code": "LessonCard.subject_id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "Subject.id",
+              "label": "Subject.name"
+            },
+            "select_values": [],
+            "required": false,
+            "value": ""
+          },
+          "LessonCard.teacher_id": {
+            "name": "Вчитель",
+            "code": "LessonCard.teacher_id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "User.id",
+              "label": "User.name",
+              "filter": "User.group_id::3|6|10"
+            },
+            "select_values": [],
+            "required": false,
+            "value": ""
+          },
+          "LessonCard.class_room_id": {
+            "name": "Аудиторія",
+            "code": "LessonCard.class_room_id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "ClassRoom.id",
+              "label": "ClassRoom.name"
+            },
+            "select_values": [],
+            "required": false,
+            "value": ""
+          },
+          "LessonCard.student_group_id": {
+            "name": "Група",
+            "code": "LessonCard.student_group_id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "StudentGroup.id",
+              "label": "StudentGroup.name"
+            },
+            "select_values": [],
+            "required": false,
+            "value": ""
+          },
+          "LessonCard.lesson_activity_id": {
+            "name": "Активність на уроці",
+            "code": "LessonCard.lesson_activity_id",
+            "type_element": "select",
+            "select_settings": {
+              "id": "LessonActivity.id",
+              "label": "LessonActivity.name"
+            },
+            "select_values": [],
+            "value": ""
+          },
+          "LessonCard.notes": {
+            "name": "Примітка",
+            "code": "LessonCard.notes",
+            "type_element": "textarea",
+            "value": ""
+          }
+        }
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "exceptions": {
+    "delete-foreign-keys": [
+      "<br> - уроки",
+      "<br> - заміни",
+      "<br> - оцінки",
+      "<br> - відсутності"
+    ]
+  },
+  "_link": ""
+}

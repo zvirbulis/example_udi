@@ -1,0 +1,109 @@
+{
+  "code": "Parents",
+  "access": ["manager"],
+  "list": {
+    "metadata": {
+      "title": "Батьки",
+      "class_name": "subjects-list"
+    },
+    "pagination": {
+      "per_page": 1
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "User.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "ПІП",
+        "code": "User.name",
+        "sortable": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Створення одного з батьків",
+        "class_name": "subjects-edit-form"
+      },
+      "grid": {
+        "actions": [],
+        "order": [
+          "User.id",
+          "User.name",
+          "User.password",
+          "User.password_confirmation",
+          "User.active",
+          "User.email",
+          "User.invite",
+          "User.group_id"
+        ],
+        "groups": [],
+        "fields": {
+          "User.id": {
+            "name": "ІД",
+            "code": "User.id",
+            "primary_key": true,
+            "type_element": "hidden"
+          },
+          "User.name": {
+            "code": "User.name",
+            "type_element": "hidden"
+          },
+          "User.password": {
+            "code": "User.password",
+            "type_element": "hidden"
+          },
+          "User.password_confirmation": {
+            "code": "User.password_confirmation",
+            "type_element": "hidden",
+            "virtual": true
+          },
+          "User.active": {
+            "name": "Активність",
+            "code": "User.active",
+            "type_element": "hidden",
+            "value": "Y"
+          },
+          "User.email": {
+            "name": "E-mail",
+            "code": "User.email",
+            "type_element": "input",
+            "required": true,
+            "validation": {
+              "rules": "required|max:255|email|unique",
+              "messages": {
+                "required": "E-mail повинен бути заповнений",
+                "max": "E-mail не повинен перевищувати :max символів",
+                "email": "E-mail заданий не вірно",
+                "unique": "Користувач з таким E-mail`ом вже існує в системі"
+              }
+            }
+          },
+          "User.invite": {
+            "name": "Вислати запрошення",
+            "description": "Користувач отримає листа з посиланням, за допомогою якого зможе авторизуватися на сайті",
+            "code": "User.invite",
+            "type_element": "checkbox",
+            "virtual": true,
+            "visibility": "new",
+            "value": 1
+          },
+          "User.group_id": {
+            "name": "Група",
+            "code": "User.group_id",
+            "type_element": "hidden",
+            "value": "5"
+          }
+        }
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "_link": ""
+}

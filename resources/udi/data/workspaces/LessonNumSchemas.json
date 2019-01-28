@@ -1,0 +1,109 @@
+{
+  "code": "LessonNumSchema",
+  "access": ["manager"],
+  "list": {
+    "metadata": {
+      "title": "Список схем дзвінків",
+      "class_name": "lesson-num-schemas-list"
+    },
+    "sort": {
+      "field": "LessonNumSchema.id",
+      "order": "desc"
+    },
+    "pagination": {
+      "per_page": 20
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "LessonNumSchema.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Назва",
+        "code": "LessonNumSchema.name",
+        "sortable": false
+      },
+      {
+        "name": "Сортування",
+        "code": "LessonNumSchema.sort",
+        "sortable": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування схеми дзвінків"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "LessonNumSchema.id",
+          "LessonNumSchema.name",
+          "LessonNumSchema.sort"
+        ],
+        "groups": [],
+        "fields": {
+          "LessonNumSchema.id": {
+            "name": "Ід",
+            "primary_key": true,
+            "code": "LessonNumSchema.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "LessonNumSchema.name": {
+            "name": "Назва",
+            "code": "LessonNumSchema.name",
+            "type_element": "input",
+            "type_data": "text",
+            "required": true,
+            "validation": {
+              "rules": "required|max:32",
+              "messages": {
+                "required": "Назва схеми повинна бути заповненою",
+                "max": "Назва схеми не повинна перевищувати :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "LessonNumSchema.sort": {
+            "name": "Сортування",
+            "code": "LessonNumSchema.sort",
+            "type_element": "input",
+            "value": "10"
+          }
+        },
+        "relations": [
+          {
+            "code": "LessonNums",
+            "name": "Дзвінки",
+            "_link": ""
+          }
+        ]
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "exceptions": {
+    "delete-foreign-keys": [
+      "<br> - класи"
+    ]
+  },
+  "_link": ""
+}

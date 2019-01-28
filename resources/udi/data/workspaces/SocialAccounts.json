@@ -1,0 +1,101 @@
+{
+  "code": "SocialAccounts",
+  "access": ["manager"],
+  "list": {
+    "metadata": {
+      "title": "Акаунти у соцмережах",
+      "class_name": "class-rooms-list"
+    },
+    "sort": {},
+    "pagination": {
+      "page": 1,
+      "per_page": 20
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "SocialAccount.id",
+        "primary_key": true,
+        "default_hidden": true,
+        "sortable": true
+      },
+      {
+        "name": "Соцмережа",
+        "code": "SocialAccount.provider",
+        "sortable": true
+      },
+      {
+        "name": "ІД в соцмережі",
+        "code": "SocialAccount.provider_user_id",
+        "sortable": true
+      },
+      {
+        "name": "Сторінка в соцмережі",
+        "code": "SocialAccount.url",
+        "default_hidden": true
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування інтеграції",
+        "class_name": "class-rooms-edit-form"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "SocialAccount.id",
+          "SocialAccount.provider",
+          "SocialAccount.provider_user_id",
+          "SocialAccount.url"
+        ],
+        "groups": [],
+        "fields": {
+          "SocialAccount.id":{
+            "name": "Ід",
+            "code": "SocialAccount.id",
+            "primary_key": true,
+            "type_element": "hidden"
+          },
+          "SocialAccount.provider_user_id": {
+            "name": "ІД в соцмережі",
+            "code": "SocialAccount.provider_user_id",
+            "type_element": "input",
+            "readonly": true,
+            "value": ""
+          },
+          "SocialAccount.provider": {
+            "name": "Назва соцмережі",
+            "code": "SocialAccount.provider",
+            "type_element": "input",
+            "readonly": true,
+            "value": ""
+          },
+          "SocialAccount.url": {
+            "name": "Посилання на сторінку в соцмережі",
+            "code": "SocialAccount.url",
+            "type_element": "textarea",
+            "readonly": true,
+            "value": ""
+          }
+        }
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "_link": ""
+}

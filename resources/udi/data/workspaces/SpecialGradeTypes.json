@@ -1,0 +1,126 @@
+{
+  "code": "SpecialGradeTypes",
+  "access": ["manager"],
+  "list": {
+    "metadata": {
+      "title": "Типи спеціальних оцінок",
+      "class_name": "special_grade_types-list"
+    },
+    "sort": {
+      "field": "SpecialGradeType.name",
+      "order": "asc"
+    },
+    "pagination": {
+      "per_page": 20
+    },
+    "fields": [
+      {
+        "name": "Ід",
+        "code": "SpecialGradeType.id",
+        "sortable": true,
+        "primary_key": true
+      },
+      {
+        "name": "Назва",
+        "code": "SpecialGradeType.name",
+        "sortable": true
+      },
+      {
+        "name": "Символьний код",
+        "code": "SpecialGradeType.code",
+        "sortable": true
+      },
+      {
+        "name": "Для всіх предметів",
+        "code": "SpecialGradeType.common",
+        "sortable": true,
+        "format": "boolean"
+      }
+    ],
+    "items": []
+  },
+  "forms": {
+    "self": {
+      "metadata": {
+        "title": "Редагування типу спеціальної оцінки"
+      },
+      "grid": {
+        "actions": [
+          {
+            "name": "Створити копію",
+            "code": "clone_item",
+            "type": "frontend"
+          },
+          {
+            "name": "Видалити запис",
+            "code": "delete_item",
+            "type": "frontend"
+          }
+        ],
+        "order": [
+          "SpecialGradeType.id",
+          "SpecialGradeType.name",
+          "SpecialGradeType.code",
+          "SpecialGradeType.common"
+        ],
+        "groups": [],
+        "fields": {
+          "SpecialGradeType.id": {
+            "name": "Ід",
+            "primary_key": true,
+            "code": "SpecialGradeType.id",
+            "type_element": "hidden",
+            "value": ""
+          },
+          "SpecialGradeType.name": {
+            "name": "Назва",
+            "code": "SpecialGradeType.name",
+            "type_element": "input",
+            "type_data": "text",
+            "required": true,
+            "validation": {
+              "rules": "required|max:64",
+              "messages": {
+                "required": "Назва не повинна бути порожньою",
+                "max": "Назва не повинна перевищувати :max символів"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "SpecialGradeType.code": {
+            "name": "Символьний код",
+            "code": "SpecialGradeType.code",
+            "type_element": "input",
+            "type_data": "text",
+            "required": true,
+            "validation": {
+              "rules": "required|max:32|unique",
+              "messages": {
+                "required": "Символьний код має бути заповнений",
+                "max": "Символьний код не повинен перевищувати :max символів",
+                "unique": "Оцінка з таким символьним кодом вже є у системі"
+              }
+            },
+            "value": "",
+            "errors": []
+          },
+          "SpecialGradeType.common": {
+            "name": "Для всіх предметів",
+            "description": "Може бути використана в рамках усіх викладаємих предметів",
+            "code": "SpecialGradeType.common",
+            "class_name": "class-room-name",
+            "type_element": "checkbox",
+            "required": false,
+            "value": 0,
+            "errors": []
+          }
+        }
+      },
+      "_link": ""
+    },
+    "parent": {}
+  },
+  "exceptions": {},
+  "_link": ""
+}
